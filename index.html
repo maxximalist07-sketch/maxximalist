@@ -97,7 +97,7 @@
             margin-top: 35px;
         }
 
-        /* POPUP MODAL STYLES */
+        /* MODAL STYLES */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -126,29 +126,18 @@
             color: var(--gold);
             letter-spacing: 0.4em;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             font-size: 1.5rem;
         }
 
-        .modal-subtitle {
-            color: var(--gold);
-            font-size: 11px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            opacity: 0.6;
-            margin-bottom: 30px;
-            display: block;
-        }
-
-        /* Mood Grid */
-        .mood-grid {
+        /* Grid for Shop & Contact items */
+        .link-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
-            margin-top: 20px;
         }
 
-        .mood-item {
+        .grid-item {
             border: 1px solid rgba(226, 192, 141, 0.2);
             padding: 20px;
             color: var(--gold);
@@ -159,7 +148,7 @@
             transition: all 0.3s ease;
         }
 
-        .mood-item:hover {
+        .grid-item:hover {
             background-color: var(--gold);
             color: var(--burgundy);
         }
@@ -179,7 +168,7 @@
             .nav-links a { font-size: 10px; letter-spacing: 0.15em; }
             .brand-symbol { max-height: 90px; }
             .modal-content { padding: 40px 20px; }
-            .mood-grid { grid-template-columns: 1fr; gap: 10px; }
+            .link-grid { grid-template-columns: 1fr; gap: 10px; }
         }
     </style>
 </head>
@@ -190,7 +179,7 @@
             <li><a href="#">Home</a></li>
             <li><a onclick="openModal('aboutModal')">About</a></li>
             <li><a onclick="openModal('shopModal')">Shop</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a onclick="openModal('contactModal')">Contact</a></li>
         </ul>
     </nav>
 
@@ -205,7 +194,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
             <h2>About Us</h2>
-            <p style="color: var(--gold); line-height: 1.8; font-size: 14px; opacity: 0.9; margin-top: 20px;">
+            <p style="color: var(--gold); line-height: 1.8; font-size: 14px; opacity: 0.9;">
                 Maxximalist is a curated space for those who believe more is more. 
                 We bring together an unlimited collection of bold identities and refined goods.
             </p>
@@ -215,14 +204,24 @@
     <div class="modal-overlay" id="shopModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('shopModal')">&times;</span>
-            <h2>Collections</h2>
-            <span class="modal-subtitle">Shop by Mood</span>
-            
-            <div class="mood-grid">
-                <a href="#" class="mood-item">Midnight Noir</a>
-                <a href="#" class="mood-item">Golden Era</a>
-                <a href="#" class="mood-item">Velvet Silence</a>
-                <a href="#" class="mood-item">Ethereal Bloom</a>
+            <h2>Shop by Mood</h2>
+            <div class="link-grid">
+                <a href="#" class="grid-item">Midnight Noir</a>
+                <a href="#" class="grid-item">Golden Era</a>
+                <a href="#" class="grid-item">Velvet Silence</a>
+                <a href="#" class="grid-item">Ethereal Bloom</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Connect</h2>
+            <div class="link-grid">
+                <a href="https://www.instagram.com/maxximalist_?igsh=MXI3b2VwOWZ0bTg2Zw==" target="_blank" class="grid-item">Instagram</a>
+                <a href="https://youtube.com/@maxximalist-q2n?si=MH74vvIOveFQZQU9" target="_blank" class="grid-item">YouTube</a>
+                <a href="mailto:maxximalist07@gmail.com" class="grid-item" style="grid-column: span 2;">Email Us</a>
             </div>
         </div>
     </div>
@@ -236,7 +235,6 @@
             document.getElementById(id).style.display = "none";
         }
 
-        // Close modal on outside click
         window.onclick = function(event) {
             if (event.target.className === 'modal-overlay') {
                 event.target.style.display = "none";
