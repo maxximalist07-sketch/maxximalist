@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maxximalist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -14,22 +14,24 @@
             justify-content: center;
             align-items: center;
             background-color: #4a0e0e; 
-            background: radial-gradient(circle, #5e1313 0%, #2b0808 100%);
+            background: radial-gradient(circle, #5e1313 0%, #1a0505 100%);
             overflow: hidden;
         }
 
         .brand-title {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Bodoni Moda', serif;
             font-style: italic;
-            /* Explicitly set to normal weight */
-            font-weight: 400; 
+            font-weight: 400;
             color: #e2c08d; 
-            font-size: clamp(3rem, 10vw, 6rem);
-            letter-spacing: 0.02em;
+            /* Font size scales based on screen width */
+            font-size: clamp(3.5rem, 12vw, 7.5rem);
+            /* Tighter spacing to match the image precisely */
+            letter-spacing: -0.01em; 
             text-rendering: optimizeLegibility;
-            /* Removed text-shadow (glow) */
-            text-shadow: none; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             user-select: none;
+            margin: 0;
         }
     </style>
 </head>
