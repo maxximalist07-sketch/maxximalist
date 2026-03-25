@@ -24,24 +24,21 @@
 
         /* NAVIGATION BAR */
         .navbar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 25px 15px; /* Added side padding for mobile safety */
-            border-bottom: 1px solid rgba(226, 192, 141, 0.15);
             width: 100%;
+            border-bottom: 1px solid rgba(226, 192, 141, 0.15);
+            padding: 25px 0;
             box-sizing: border-box;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            margin: 0;
-            padding: 0;
-            justify-content: center;
-            width: 100%;
-            /* Desktop Spacing */
-            gap: 60px; 
+            margin: 0 auto;
+            padding: 0 5%; /* Side safety margin */
+            /* This spreads them perfectly across the available space */
+            justify-content: space-evenly; 
+            align-items: center;
+            max-width: 900px; /* Prevents links from drifting too far on giant monitors */
         }
 
         .nav-links a {
@@ -49,33 +46,29 @@
             color: var(--gold);
             font-family: 'Cinzel', serif;
             font-size: 14px;
-            letter-spacing: 0.4em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
-            white-space: nowrap; /* Prevents words from wrapping */
+            white-space: nowrap;
             transition: opacity 0.3s ease;
         }
 
-        /* MOBILE ADJUSTMENTS - Ensures it doesn't crop */
+        /* MOBILE ADJUSTMENTS */
         @media (max-width: 600px) {
             .nav-links {
-                gap: 20px; /* Reduced gap so it fits on small screens */
+                padding: 0 2%;
             }
             .nav-links a {
-                font-size: 11px; /* Slightly smaller text */
-                letter-spacing: 0.2em; /* Slightly tighter but still "special" */
-            }
-            .navbar {
-                padding: 20px 10px;
+                font-size: 10px; /* Smaller font to ensure no wrap/cutoff */
+                letter-spacing: 0.15em; /* Tighter for small screens */
             }
         }
 
-        /* MAIN LOGO AREA */
+        /* LOGO AREA */
         .content-area {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
         }
 
         .brand-title {
@@ -85,7 +78,6 @@
             color: var(--gold); 
             font-size: clamp(3rem, 15vw, 8rem);
             letter-spacing: -0.02em;
-            text-align: center;
             margin: 0;
             user-select: none;
         }
