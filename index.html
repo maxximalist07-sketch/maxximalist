@@ -82,13 +82,24 @@
             text-align: center;
         }
 
+        /* TAGLINE STYLE */
+        .tagline {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 0.5em; /* Extra wide for an editorial feel */
+            text-transform: uppercase;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
         /* THE SEPARATOR LINE */
         .separator-line {
-            width: 60px; /* Small, elegant width */
+            width: 60px;
             height: 1px;
             background-color: var(--gold);
             opacity: 0.4;
-            margin-top: 40px; /* Space after the text */
+            margin-top: 35px;
         }
 
         /* MOBILE ADJUSTMENTS */
@@ -104,9 +115,13 @@
                 max-height: 90px;
                 margin-bottom: 15px;
             }
+            .tagline {
+                font-size: 9px;
+                letter-spacing: 0.3em;
+            }
             .separator-line {
                 width: 40px;
-                margin-top: 30px;
+                margin-top: 25px;
             }
         }
     </style>
@@ -124,7 +139,10 @@
 
     <main class="content-area">
         <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Maxximalist Symbol" class="brand-symbol">
+        
         <h1 class="brand-title">Maxximalist</h1>
+        
+        <p class="tagline">Shop the Unlimited</p>
         
         <div class="separator-line"></div>
     </main>
