@@ -116,7 +116,7 @@
             background-color: var(--burgundy);
             border: 1px solid rgba(226, 192, 141, 0.3);
             padding: 50px 40px;
-            max-width: 600px;
+            max-width: 450px; /* Narrower for vertical stack */
             width: 85%;
             text-align: center;
             position: relative;
@@ -130,7 +130,14 @@
             font-size: 1.5rem;
         }
 
-        /* Grid for Shop & Contact items */
+        /* Vertical Stack for Contact */
+        .vertical-link-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Grid for Shop items (Keeping this for the Shop Modal) */
         .link-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -139,7 +146,7 @@
 
         .grid-item {
             border: 1px solid rgba(226, 192, 141, 0.2);
-            padding: 20px;
+            padding: 18px;
             color: var(--gold);
             text-decoration: none;
             font-size: 13px;
@@ -218,10 +225,10 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
             <h2>Connect</h2>
-            <div class="link-grid">
+            <div class="vertical-link-stack">
                 <a href="https://www.instagram.com/maxximalist_?igsh=MXI3b2VwOWZ0bTg2Zw==" target="_blank" class="grid-item">Instagram</a>
                 <a href="https://youtube.com/@maxximalist-q2n?si=MH74vvIOveFQZQU9" target="_blank" class="grid-item">YouTube</a>
-                <a href="mailto:maxximalist07@gmail.com" class="grid-item" style="grid-column: span 2;">Email Us</a>
+                <a href="mailto:maxximalist07@gmail.com" class="grid-item">Email Us</a>
             </div>
         </div>
     </div>
