@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maxximalist</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
     <style>
         body, html {
             margin: 0;
@@ -13,9 +13,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            /* The deep burgundy color from your image */
             background-color: #4a0e0e; 
-            /* Subtle vignette effect for depth */
             background: radial-gradient(circle, #5e1313 0%, #2b0808 100%);
             overflow: hidden;
         }
@@ -23,13 +21,14 @@
         .brand-title {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            /* A soft, golden-champagne color */
+            /* Explicitly set to normal weight */
+            font-weight: 400; 
             color: #e2c08d; 
             font-size: clamp(3rem, 10vw, 6rem);
             letter-spacing: 0.02em;
             text-rendering: optimizeLegibility;
-            /* Subtle glow to mimic the image lighting */
-            text-shadow: 0px 0px 15px rgba(226, 192, 141, 0.2);
+            /* Removed text-shadow (glow) */
+            text-shadow: none; 
             user-select: none;
         }
     </style>
