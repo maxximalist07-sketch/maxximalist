@@ -16,7 +16,6 @@
             padding: 0;
             height: 100%;
             background-color: var(--burgundy); 
-            /* Radial gradient matching the lighting in your photos */
             background: radial-gradient(circle, #5e1313 0%, #1a0505 100%);
             display: flex;
             flex-direction: column;
@@ -26,7 +25,6 @@
         /* NAVIGATION BAR */
         .navbar {
             width: 100%;
-            /* Subtle divider line */
             border-bottom: 1px solid rgba(226, 192, 141, 0.15);
             padding: 25px 0;
             box-sizing: border-box;
@@ -36,17 +34,10 @@
             display: flex;
             list-style: none;
             margin: 0 auto;
-            /* Side safety padding to prevent edge-clipping */
             padding: 0 5%; 
-            /* Spreads links evenly across the screen */
             justify-content: space-evenly; 
             align-items: center;
-            /* Prevents links from spreading too wide on large desktop screens */
             max-width: 900px; 
-        }
-
-        .nav-links li {
-            display: inline-block;
         }
 
         .nav-links a {
@@ -54,7 +45,6 @@
             color: var(--gold);
             font-family: 'Cinzel', serif;
             font-size: 14px;
-            /* Wide letter spacing for an elegant, high-end look */
             letter-spacing: 0.3em;
             text-transform: uppercase;
             white-space: nowrap;
@@ -65,40 +55,48 @@
             opacity: 0.6;
         }
 
-        /* MOBILE ADJUSTMENTS - Ensures no cropping on phones */
-        @media (max-width: 600px) {
-            .nav-links {
-                padding: 0 2%;
-            }
-            .nav-links a {
-                /* Smaller font and spacing so everything fits perfectly on mobile */
-                font-size: 10px; 
-                letter-spacing: 0.15em; 
-            }
-        }
-
         /* MAIN CONTENT AREA */
         .content-area {
             flex-grow: 1;
             display: flex;
+            flex-direction: column; /* Stacks symbol on top of text */
             justify-content: center;
             align-items: center;
             padding: 20px;
+        }
+
+        /* BRAND SYMBOL */
+        .brand-symbol {
+            max-height: 60px; /* Adjust this to make the symbol smaller/larger */
+            width: auto;
+            margin-bottom: 20px; /* Space between symbol and text */
+            opacity: 0.9;
         }
 
         /* LOGO STYLE */
         .brand-title {
             font-family: 'Bodoni Moda', serif;
             font-style: italic;
-            font-weight: 400; /* Unbolded as requested */
+            font-weight: 400;
             color: var(--gold); 
-            /* Scales smoothly from mobile to desktop */
             font-size: clamp(3rem, 15vw, 8rem);
             letter-spacing: -0.02em;
             margin: 0;
-            text-shadow: none; /* No glow as requested */
+            text-shadow: none;
             user-select: none;
             text-align: center;
+        }
+
+        /* MOBILE ADJUSTMENTS */
+        @media (max-width: 600px) {
+            .nav-links a {
+                font-size: 10px; 
+                letter-spacing: 0.15em; 
+            }
+            .brand-symbol {
+                max-height: 45px; /* Slightly smaller on phones */
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
@@ -114,6 +112,8 @@
     </nav>
 
     <main class="content-area">
+        <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Maxximalist Symbol" class="brand-symbol">
+        
         <h1 class="brand-title">Maxximalist</h1>
     </main>
 
