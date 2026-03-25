@@ -20,6 +20,7 @@
             display: flex;
             flex-direction: column;
             overflow: hidden;
+            font-family: 'Cinzel', serif;
         }
 
         /* NAVIGATION BAR */
@@ -28,6 +29,7 @@
             border-bottom: 1px solid rgba(226, 192, 141, 0.15);
             padding: 30px 0 25px 0;
             box-sizing: border-box;
+            z-index: 10;
         }
 
         .nav-links {
@@ -43,12 +45,11 @@
         .nav-links a {
             text-decoration: none;
             color: var(--gold);
-            font-family: 'Cinzel', serif;
             font-size: 14px;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             white-space: nowrap;
-            transition: opacity 0.3s ease;
+            cursor: pointer;
         }
 
         /* MAIN CONTENT AREA */
@@ -61,7 +62,6 @@
             padding: 20px;
         }
 
-        /* BRAND SYMBOL */
         .brand-symbol {
             max-height: 120px; 
             width: auto;
@@ -69,7 +69,6 @@
             opacity: 0.9;
         }
 
-        /* LOGO STYLE */
         .brand-title {
             font-family: 'Bodoni Moda', serif;
             font-style: italic;
@@ -78,22 +77,18 @@
             font-size: clamp(3.5rem, 15vw, 8.5rem);
             letter-spacing: -0.02em;
             margin: 0;
-            user-select: none;
             text-align: center;
         }
 
-        /* TAGLINE STYLE */
         .tagline {
-            font-family: 'Cinzel', serif;
             color: var(--gold);
             font-size: 12px;
-            letter-spacing: 0.5em; /* Extra wide for an editorial feel */
+            letter-spacing: 0.5em;
             text-transform: uppercase;
             margin-top: 15px;
             opacity: 0.8;
         }
 
-        /* THE SEPARATOR LINE */
         .separator-line {
             width: 60px;
             height: 1px;
@@ -102,27 +97,63 @@
             margin-top: 35px;
         }
 
+        /* POPUP MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 5, 5, 0.9); /* Darker version of your background */
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(5px); /* Softens the background logo */
+        }
+
+        .modal-content {
+            background-color: var(--burgundy);
+            border: 1px solid var(--gold);
+            padding: 40px;
+            max-width: 500px;
+            width: 80%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .modal-content h2 {
+            color: var(--gold);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .modal-content p {
+            color: var(--gold);
+            line-height: 1.8;
+            font-size: 14px;
+            opacity: 0.9;
+            letter-spacing: 0.05em;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--gold);
+            font-size: 24px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 600px) {
-            .navbar {
-                padding: 50px 0 20px 0; 
-            }
-            .nav-links a {
-                font-size: 10px; 
-                letter-spacing: 0.15em; 
-            }
-            .brand-symbol {
-                max-height: 90px;
-                margin-bottom: 15px;
-            }
-            .tagline {
-                font-size: 9px;
-                letter-spacing: 0.3em;
-            }
-            .separator-line {
-                width: 40px;
-                margin-top: 25px;
-            }
+            .navbar { padding: 50px 0 20px 0; }
+            .nav-links a { font-size: 10px; letter-spacing: 0.15em; }
+            .brand-symbol { max-height: 90px; }
+            .modal-content { padding: 25px; width: 85%; }
         }
     </style>
 </head>
@@ -131,21 +162,49 @@
     <nav class="navbar">
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a onclick="toggleAbout()">About</a></li>
             <li><a href="#">Shop</a></li>
             <li><a href="#">Contact</a></li>
         </ul>
     </nav>
 
     <main class="content-area">
-        <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Maxximalist Symbol" class="brand-symbol">
-        
+        <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Symbol" class="brand-symbol">
         <h1 class="brand-title">Maxximalist</h1>
-        
         <p class="tagline">Shop the Unlimited</p>
-        
         <div class="separator-line"></div>
     </main>
+
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="toggleAbout()">&times;</span>
+            <h2>About Us</h2>
+            <p>
+                Maxximalist is a curated space for those who believe more is more. 
+                We bring together an unlimited collection of bold identities and refined goods. 
+                Our mission is to celebrate variety through an editorial lens.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAbout() {
+            const modal = document.getElementById('aboutModal');
+            if (modal.style.display === "flex") {
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "flex";
+            }
+        }
+
+        // Close modal if user clicks anywhere outside the box
+        window.onclick = function(event) {
+            const modal = document.getElementById('aboutModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 </html>
