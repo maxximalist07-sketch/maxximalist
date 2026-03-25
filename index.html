@@ -26,7 +26,7 @@
         .navbar {
             width: 100%;
             border-bottom: 1px solid rgba(226, 192, 141, 0.15);
-            padding: 30px 0 25px 0; /* Increased top padding for better breathing room */
+            padding: 30px 0 25px 0;
             box-sizing: border-box;
         }
 
@@ -51,10 +51,6 @@
             transition: opacity 0.3s ease;
         }
 
-        .nav-links a:hover {
-            opacity: 0.6;
-        }
-
         /* MAIN CONTENT AREA */
         .content-area {
             flex-grow: 1;
@@ -65,7 +61,7 @@
             padding: 20px;
         }
 
-        /* BRAND SYMBOL - 2X SIZE */
+        /* BRAND SYMBOL */
         .brand-symbol {
             max-height: 120px; 
             width: auto;
@@ -79,22 +75,26 @@
             font-style: italic;
             font-weight: 400;
             color: var(--gold); 
-            font-size: clamp(3rem, 15vw, 8rem);
+            font-size: clamp(3.5rem, 15vw, 8.5rem);
             letter-spacing: -0.02em;
             margin: 0;
-            text-shadow: none;
             user-select: none;
             text-align: center;
+        }
+
+        /* THE SEPARATOR LINE */
+        .separator-line {
+            width: 60px; /* Small, elegant width */
+            height: 1px;
+            background-color: var(--gold);
+            opacity: 0.4;
+            margin-top: 40px; /* Space after the text */
         }
 
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 600px) {
             .navbar {
-                /* Lowered the bar further for phone view */
                 padding: 50px 0 20px 0; 
-            }
-            .nav-links {
-                padding: 0 3%;
             }
             .nav-links a {
                 font-size: 10px; 
@@ -103,6 +103,10 @@
             .brand-symbol {
                 max-height: 90px;
                 margin-bottom: 15px;
+            }
+            .separator-line {
+                width: 40px;
+                margin-top: 30px;
             }
         }
     </style>
@@ -121,6 +125,8 @@
     <main class="content-area">
         <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Maxximalist Symbol" class="brand-symbol">
         <h1 class="brand-title">Maxximalist</h1>
+        
+        <div class="separator-line"></div>
     </main>
 
 </body>
