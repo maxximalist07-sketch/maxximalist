@@ -1,100 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Cormorant+Garamond:ital,wght@1,300&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxximalist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* The deep burgundy color from your image */
+            background-color: #4a0e0e; 
+            /* Subtle vignette effect for depth */
+            background: radial-gradient(circle, #5e1313 0%, #2b0808 100%);
+            overflow: hidden;
+        }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  
-  body, html { height: 100%; width: 100%; overflow-x: hidden; font-family: 'Cormorant Garamond', serif; }
-
-  /* THE HERO SECTION (Like your photo) */
-  .hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    /* REPLACE the URL below with your own image link */
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                url('https://images.unsplash.com/photo-1518191766444-142c2370d33c?q=80&w=2000&auto=format&fit=crop');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
-  }
-
-  /* TOP NAVIGATION */
-  .nav {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    padding: 30px;
-    display: flex;
-    justify-content: flex-end;
-    gap: 30px;
-  }
-
-  .nav a {
-    color: #D4AF37; /* Gold */
-    text-decoration: none;
-    font-family: 'Cinzel', serif;
-    font-size: 12px;
-    letter-spacing: 2px;
-  }
-
-  /* CENTER TEXT */
-  .hero h1 {
-    font-size: 80px;
-    font-weight: 300;
-    font-style: italic;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-  }
-
-  .hero p {
-    font-size: 18px;
-    letter-spacing: 5px;
-    text-transform: lowercase;
-    opacity: 0.9;
-  }
-
-  /* BUTTON */
-  .btn {
-    margin-top: 30px;
-    padding: 12px 30px;
-    border: 1px solid #D4AF37;
-    background: transparent;
-    color: #D4AF37;
-    text-decoration: none;
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    transition: 0.3s;
-  }
-
-  .btn:hover {
-    background: #D4AF37;
-    color: #200101;
-  }
-</style>
+        .brand-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            /* A soft, golden-champagne color */
+            color: #e2c08d; 
+            font-size: clamp(3rem, 10vw, 6rem);
+            letter-spacing: 0.02em;
+            text-rendering: optimizeLegibility;
+            /* Subtle glow to mimic the image lighting */
+            text-shadow: 0px 0px 15px rgba(226, 192, 141, 0.2);
+            user-select: none;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="hero">
-    <nav class="nav">
-      <a href="#">Home</a>
-      <a href="#">Gallery</a>
-      <a href="#">Shop</a>
-    </nav>
-
-    <h1>Maxximalist</h1>
-    <p>shop the limitless</p>
-    
-    <a href="#" class="btn">Explore Now</a>
-  </div>
+    <h1 class="brand-title">Maxximalist</h1>
 
 </body>
 </html>
