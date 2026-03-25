@@ -7,28 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --burgundy: #4a0e0e;
             --gold: #e2c08d;
+            --burgundy: #4a0e0e;
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            width: 100%;
             height: 100%;
-            background: radial-gradient(circle, #5e1313 0%, #1a0505 100%);
             background-color: var(--burgundy); 
+            background: radial-gradient(circle, #5e1313 0%, #1a0505 100%);
             display: flex;
             flex-direction: column;
-            overflow-x: hidden; /* Prevents side-scrolling */
+            overflow: hidden;
         }
 
-        /* The Navigation Bar */
+        /* NAVIGATION BAR */
         .navbar {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px 10px;
+            padding: 25px 15px; /* Added side padding for mobile safety */
             border-bottom: 1px solid rgba(226, 192, 141, 0.15);
             width: 100%;
             box-sizing: border-box;
@@ -36,25 +35,41 @@
 
         .nav-links {
             display: flex;
-            /* Smaller gap for mobile, larger for desktop */
-            gap: clamp(15px, 4vw, 50px); 
             list-style: none;
             margin: 0;
             padding: 0;
+            justify-content: center;
+            width: 100%;
+            /* Desktop Spacing */
+            gap: 60px; 
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--gold);
             font-family: 'Cinzel', serif;
-            /* Fluid font size for nav */
-            font-size: clamp(10px, 2.5vw, 14px); 
-            letter-spacing: 0.2em; 
+            font-size: 14px;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
-            white-space: nowrap;
+            white-space: nowrap; /* Prevents words from wrapping */
+            transition: opacity 0.3s ease;
         }
 
-        /* Centered Logo Area */
+        /* MOBILE ADJUSTMENTS - Ensures it doesn't crop */
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 20px; /* Reduced gap so it fits on small screens */
+            }
+            .nav-links a {
+                font-size: 11px; /* Slightly smaller text */
+                letter-spacing: 0.2em; /* Slightly tighter but still "special" */
+            }
+            .navbar {
+                padding: 20px 10px;
+            }
+        }
+
+        /* MAIN LOGO AREA */
         .content-area {
             flex-grow: 1;
             display: flex;
@@ -68,25 +83,23 @@
             font-style: italic;
             font-weight: 400;
             color: var(--gold); 
-            /* Scaled down to ensure it fits on small screens */
-            font-size: clamp(2.5rem, 15vw, 7rem);
-            letter-spacing: -0.02em; 
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            margin: 0;
+            font-size: clamp(3rem, 15vw, 8rem);
+            letter-spacing: -0.02em;
             text-align: center;
+            margin: 0;
+            user-select: none;
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Shop</a>
-            <a href="#">Contact</a>
-        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
     </nav>
 
     <main class="content-area">
