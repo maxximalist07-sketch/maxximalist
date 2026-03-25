@@ -16,6 +16,7 @@
             padding: 0;
             height: 100%;
             background-color: var(--burgundy); 
+            /* Radial gradient matching the lighting in your photos */
             background: radial-gradient(circle, #5e1313 0%, #1a0505 100%);
             display: flex;
             flex-direction: column;
@@ -25,6 +26,7 @@
         /* NAVIGATION BAR */
         .navbar {
             width: 100%;
+            /* Subtle divider line */
             border-bottom: 1px solid rgba(226, 192, 141, 0.15);
             padding: 25px 0;
             box-sizing: border-box;
@@ -34,11 +36,17 @@
             display: flex;
             list-style: none;
             margin: 0 auto;
-            padding: 0 5%; /* Side safety margin */
-            /* This spreads them perfectly across the available space */
+            /* Side safety padding to prevent edge-clipping */
+            padding: 0 5%; 
+            /* Spreads links evenly across the screen */
             justify-content: space-evenly; 
             align-items: center;
-            max-width: 900px; /* Prevents links from drifting too far on giant monitors */
+            /* Prevents links from spreading too wide on large desktop screens */
+            max-width: 900px; 
+        }
+
+        .nav-links li {
+            display: inline-block;
         }
 
         .nav-links a {
@@ -46,40 +54,51 @@
             color: var(--gold);
             font-family: 'Cinzel', serif;
             font-size: 14px;
+            /* Wide letter spacing for an elegant, high-end look */
             letter-spacing: 0.3em;
             text-transform: uppercase;
             white-space: nowrap;
             transition: opacity 0.3s ease;
         }
 
-        /* MOBILE ADJUSTMENTS */
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* MOBILE ADJUSTMENTS - Ensures no cropping on phones */
         @media (max-width: 600px) {
             .nav-links {
                 padding: 0 2%;
             }
             .nav-links a {
-                font-size: 10px; /* Smaller font to ensure no wrap/cutoff */
-                letter-spacing: 0.15em; /* Tighter for small screens */
+                /* Smaller font and spacing so everything fits perfectly on mobile */
+                font-size: 10px; 
+                letter-spacing: 0.15em; 
             }
         }
 
-        /* LOGO AREA */
+        /* MAIN CONTENT AREA */
         .content-area {
             flex-grow: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
+        /* LOGO STYLE */
         .brand-title {
             font-family: 'Bodoni Moda', serif;
             font-style: italic;
-            font-weight: 400;
+            font-weight: 400; /* Unbolded as requested */
             color: var(--gold); 
+            /* Scales smoothly from mobile to desktop */
             font-size: clamp(3rem, 15vw, 8rem);
             letter-spacing: -0.02em;
             margin: 0;
+            text-shadow: none; /* No glow as requested */
             user-select: none;
+            text-align: center;
         }
     </style>
 </head>
