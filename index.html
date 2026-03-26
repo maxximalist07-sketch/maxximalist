@@ -206,11 +206,13 @@
         }
 
         .modal-content-wide {
-            width: 100%;
+            width: 90%;
             max-width: 1400px;
             padding: 40px 20px;
             position: relative;
             text-align: center;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         .explore-title {
@@ -282,14 +284,14 @@
         /* REFINED CLOSE BUTTONS */
         .close-btn { 
             position: absolute; 
-            top: 15px; 
-            right: 15px; 
+            top: 20px; 
+            right: 20px; 
             font-size: 24px; 
             cursor: pointer; 
             color: var(--gold);
             background: rgba(0, 0, 0, 0.5); 
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -301,11 +303,8 @@
 
         /* Laptop specific close button adjustment */
         #exploreModal .close-btn, #jewelryModal .close-btn {
-            top: 120px;
-            right: 80px;
-            width: 60px;
-            height: 60px;
-            font-size: 30px;
+            top: 30px;
+            right: 30px;
         }
 
         .close-btn:hover { background: var(--gold); color: var(--burgundy); transform: scale(1.1); }
@@ -313,39 +312,46 @@
         /* --- MOBILE FIXES --- */
         @media (max-width: 768px) {
             .navbar { padding: 15px 0 10px 0; }
-            .nav-links { gap: 15px; padding: 0 10px; }
-            .nav-links a { font-size: 10px; letter-spacing: 0.1em; }
+            .nav-links { gap: 10px; padding: 0 10px; }
+            .nav-links a { font-size: 9px; letter-spacing: 0.1em; }
             
-            /* Stack New Arrivals vertically */
             .arrivals-container {
                 flex-direction: column;
                 text-align: center;
                 gap: 40px;
             }
 
-            .arrivals-text {
-                width: 100%;
-                text-align: center;
-            }
+            .arrivals-text { width: 100%; text-align: center; }
 
-            /* Make image full width and clearly visible */
             .arrivals-image-slot {
                 width: 100%;
-                max-width: 100%;
-                aspect-ratio: 1/1; /* Square for impact on mobile */
+                aspect-ratio: 1/1;
             }
 
-            .slide-btn {
-                margin: 0 auto;
-                width: 80%;
-            }
+            .slide-btn { margin: 0 auto; width: 80%; }
 
-            .categories-grid { grid-template-columns: repeat(2, 1fr); }
-            .product-card { min-width: 260px; }
-            .explore-scroll-container { padding: 20px; }
+            .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .category-card { min-height: 100px; padding: 15px; }
+            .category-name { font-size: 1.1rem; }
+            
             .brand-title { font-size: 3rem; }
-            .close-btn { right: 10px; top: 10px; width: 35px; height: 35px; }
-            #exploreModal .close-btn, #jewelryModal .close-btn { right: 25px; top: 50px; width: 50px; height: 50px; }
+
+            /* JEWELRY MODAL MOBILE FIXES */
+            #jewelryModal .modal-content-wide {
+                width: 95%;
+                padding-top: 70px;
+            }
+            
+            #jewelryModal .close-btn { 
+                top: 15px; 
+                right: 15px; 
+                width: 40px; 
+                height: 40px; 
+            }
+
+            #jewelryModal .categories-grid {
+                grid-template-columns: 1fr; /* Stack vertically on small phones for better tap area */
+            }
         }
     </style>
 </head>
@@ -404,10 +410,10 @@
     </section>
 
     <div class="modal-overlay" id="jewelryModal">
-        <div class="modal-content-wide" style="max-width: 1000px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); padding-top: 80px; border-radius: 10px;">
+        <div class="modal-content-wide" style="background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); border-radius: 10px;">
             <span class="close-btn" onclick="closeModal('jewelryModal')">&times;</span>
-            <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 3rem; margin-bottom: 40px;">Jewelry</h2>
-            <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 30px;">Jewelry</h2>
+            <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
                 <a href="#" class="category-card"><span class="category-name">Earrings</span></a>
                 <a href="#" class="category-card"><span class="category-name">Necklace</span></a>
                 <a href="#" class="category-card"><span class="category-name">Bracelets</span></a>
