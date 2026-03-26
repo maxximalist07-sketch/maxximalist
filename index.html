@@ -90,9 +90,11 @@
             opacity: 0.8;
         }
 
-        /* SECTIONS COMMON */
-        .section-padding {
+        /* COMMON SECTION STYLING */
+        .section-container {
+            width: 100%;
             padding: 80px 10%;
+            box-sizing: border-box;
             border-top: 1px solid rgba(226, 192, 141, 0.2);
         }
 
@@ -115,7 +117,7 @@
         }
         .arrivals-image-slot img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
 
-        .btn-luxury {
+        .slide-btn {
             padding: 15px 40px;
             border: 1px solid var(--gold);
             background: transparent;
@@ -127,41 +129,40 @@
             cursor: pointer;
             transition: 0.4s;
         }
-        .btn-luxury:hover { background: var(--gold); color: var(--burgundy); }
+        .slide-btn:hover { background: var(--gold); color: var(--burgundy); }
 
-        /* CATEGORIES SECTION */
+        /* CATEGORIES GRID */
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            gap: 25px;
             max-width: 1200px;
             margin: 40px auto 0 auto;
         }
 
-        .category-item {
-            position: relative;
-            height: 300px;
+        .category-card {
+            height: 250px;
             border: 1px solid rgba(226, 192, 141, 0.15);
             display: flex;
-            align-items: flex-end;
-            padding: 20px;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
             transition: 0.4s;
-            overflow: hidden;
             background: rgba(255, 255, 255, 0.02);
+            text-align: center;
+            padding: 20px;
         }
 
-        .category-item:hover {
+        .category-card:hover {
             border-color: var(--gold);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
         }
 
-        .category-label {
+        .category-title {
             font-family: 'Bodoni Moda', serif;
             font-style: italic;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             color: var(--gold);
-            z-index: 2;
         }
 
         /* MODALS */
@@ -196,8 +197,9 @@
         .contact-list {
             list-style: none; padding: 0; margin-top: 30px;
         }
-        .contact-list li { margin: 15px 0; }
-        .contact-list a { color: var(--gold); text-decoration: none; font-size: 14px; }
+        .contact-list li { margin: 20px 0; }
+        .contact-list a { color: var(--gold); text-decoration: none; font-size: 15px; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .contact-list a:hover { border-bottom: 1px solid var(--gold); }
 
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 768px) {
@@ -210,10 +212,10 @@
             .arrivals-image-slot { order: 2; width: 100%; }
 
             .categories-grid { grid-template-columns: 1fr; }
-            .category-item { height: 150px; }
+            .category-card { height: 180px; }
 
-            /* Footer/Contact stacking */
-            .contact-list li { display: block; margin: 25px 0; }
+            .contact-list li { display: block; margin: 30px 0; }
+            .brand-title { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -234,12 +236,12 @@
         <p class="tagline">Shop the Unlimited</p>
     </main>
 
-    <section class="section-padding">
+    <section class="section-container">
         <div class="arrivals-container">
             <div class="arrivals-text">
                 <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 20px;">Curated Drops</span>
                 <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 4rem; margin: 0 0 30px 0;">New Arrivals</h2>
-                <button class="btn-luxury" onclick="openModal('arrivalsModal')">Explore Collection</button>
+                <button class="slide-btn" onclick="openModal('arrivalsModal')">Explore Collection</button>
             </div>
             <div class="arrivals-image-slot">
                 <img src="https://via.placeholder.com/800x1000/2a0505/e2c08d?text=New+Collection" alt="Arrivals">
@@ -247,19 +249,19 @@
         </div>
     </section>
 
-    <section class="section-padding">
+    <section class="section-container">
         <div style="text-align: center;">
-            <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6;">Discover</span>
+            <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6;">The Collection</span>
             <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 3rem; margin: 10px 0 40px 0;">Categories</h2>
         </div>
         
         <div class="categories-grid">
-            <a href="#" class="category-item"><span class="category-label">Ribbon Flowers</span></a>
-            <a href="#" class="category-item"><span class="category-label">Pipe Cleaner Flowers</span></a>
-            <a href="#" class="category-item"><span class="category-label">Jewelry</span></a>
-            <a href="#" class="category-item"><span class="category-label">Clay Art</span></a>
-            <a href="#" class="category-item"><span class="category-label">Bookmarks</span></a>
-            <a href="#" class="category-item"><span class="category-label">Hand-drawn Portraits</span></a>
+            <a href="#" class="category-card"><span class="category-title">Ribbon Flowers</span></a>
+            <a href="#" class="category-card"><span class="category-title">Pipe Cleaner Flowers</span></a>
+            <a href="#" class="category-card"><span class="category-title">Jewelry</span></a>
+            <a href="#" class="category-card"><span class="category-title">Clay Art</span></a>
+            <a href="#" class="category-card"><span class="category-title">Bookmarks</span></a>
+            <a href="#" class="category-card"><span class="category-title">Custom Portraits</span></a>
         </div>
     </section>
 
@@ -268,10 +270,18 @@
             <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
             <h2 style="text-transform: uppercase; letter-spacing: 0.4em; font-size: 14px; margin-bottom: 20px;">Connect With Us</h2>
             <ul class="contact-list">
-                <li><a href="https://instagram.com/maxximalist_" target="_blank">Instagram: @maxximalist_</a></li>
-                <li><a href="https://youtube.com/@maxximalist-q2n" target="_blank">YouTube: @maxximalist-q2n</a></li>
-                <li><a href="mailto:maxximalist07@gmail.com">Email: maxximalist07@gmail.com</a></li>
+                <li><a href="https://instagram.com/maxximalist_" target="_blank">IG: @maxximalist_</a></li>
+                <li><a href="https://youtube.com/@maxximalist-q2n" target="_blank">YT: @maxximalist-q2n</a></li>
+                <li><a href="mailto:maxximalist07@gmail.com">Mail: maxximalist07@gmail.com</a></li>
             </ul>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2);">
+            <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
+            <h2 style="text-transform: uppercase; letter-spacing: 0.2em;">About</h2>
+            <p style="font-size: 14px; opacity: 0.8; line-height: 1.8;">Maxximalist: Where more is always more. Curating the unlimited.</p>
         </div>
     </div>
 
