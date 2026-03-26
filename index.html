@@ -127,11 +127,6 @@
             opacity: 0.9;
             transition: 0.5s ease;
         }
-        
-        .arrivals-image-slot:hover img {
-            opacity: 1;
-            transform: scale(1.02);
-        }
 
         .slide-btn {
             padding: 15px 40px;
@@ -213,73 +208,6 @@
             text-align: center;
         }
 
-        .explore-title {
-            text-transform: uppercase;
-            letter-spacing: 0.6em;
-            font-size: 14px;
-            margin-bottom: 60px;
-            opacity: 0.9;
-        }
-
-        .explore-scroll-container {
-            display: flex;
-            gap: 25px;
-            overflow-x: auto;
-            padding: 20px 40px 60px 40px;
-            scrollbar-width: none;
-        }
-
-        .explore-scroll-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        .product-card {
-            min-width: 320px;
-            flex: 0 0 auto;
-            border: 1px solid rgba(226, 192, 141, 0.2);
-            background: rgba(255, 255, 255, 0.02);
-            padding: 25px;
-            text-align: left;
-            box-sizing: border-box;
-        }
-
-        .product-image-box {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: rgba(255, 255, 255, 0.05);
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .product-info h3 {
-            font-family: 'Bodoni Moda', serif;
-            font-style: italic;
-            font-size: 24px;
-            margin: 0 0 15px 0;
-            font-weight: 400;
-        }
-
-        .product-info p {
-            font-size: 11px;
-            line-height: 1.6;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.7;
-            margin-bottom: 30px;
-            min-height: 40px;
-        }
-
-        .view-item-btn {
-            font-size: 10px;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--gold);
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 5px;
-        }
-
-        /* REFINED CLOSE BUTTONS */
         .close-btn { 
             position: absolute; 
             top: 15px; 
@@ -299,7 +227,6 @@
             transition: 0.3s;
         }
 
-        /* Laptop specific close button adjustment */
         #exploreModal .close-btn, #jewelryModal .close-btn {
             top: 120px;
             right: 80px;
@@ -308,15 +235,22 @@
             font-size: 30px;
         }
 
-        .close-btn:hover { background: var(--gold); color: var(--burgundy); transform: scale(1.1); }
-
+        /* MOBILE ADJUSTMENTS */
         @media (max-width: 768px) {
             .navbar { padding: 15px 0 10px 0; }
             .nav-links { gap: 15px; padding: 0 10px; }
             .nav-links a { font-size: 10px; letter-spacing: 0.1em; }
+            
+            /* Stack New Arrivals vertically for phone view */
+            .arrivals-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+            .arrivals-text { text-align: center; }
+            .arrivals-image-slot { width: 100%; max-width: 400px; margin: 0 auto; }
+            
             .categories-grid { grid-template-columns: repeat(2, 1fr); }
-            .product-card { min-width: 260px; }
-            .explore-scroll-container { padding: 20px; }
             .brand-title { font-size: 3rem; }
             .close-btn { right: 10px; top: 10px; width: 35px; height: 35px; }
             #exploreModal .close-btn, #jewelryModal .close-btn { right: 25px; top: 50px; width: 50px; height: 50px; }
@@ -395,24 +329,6 @@
         <div class="modal-content-wide">
             <span class="close-btn" onclick="closeModal('exploreModal')">&times;</span>
             <h2 class="explore-title">The New Arrivals</h2>
-            <div class="explore-scroll-container">
-                <div class="product-card">
-                    <div class="product-image-box"></div>
-                    <div class="product-info">
-                        <h3>Velvet Dusk</h3>
-                        <p>Hand-stitched velvet with deep crimson undertones.</p>
-                        <a href="#" class="view-item-btn">View Item</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <div class="product-image-box"></div>
-                    <div class="product-info">
-                        <h3>Golden Relic</h3>
-                        <p>Antique gold finishes meet modern silhouettes.</p>
-                        <a href="#" class="view-item-btn">View Item</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
