@@ -90,7 +90,7 @@
             opacity: 0.8;
         }
 
-        /* NEW ARRIVALS MAIN SECTION */
+        /* MAIN ARRIVALS SECTION */
         .new-arrivals-section {
             width: 100%;
             min-height: 70vh;
@@ -136,7 +136,7 @@
 
         .slide-btn:hover { background: var(--gold); color: var(--burgundy); }
 
-        /* MODAL & MULTI-SLIDE CAROUSEL */
+        /* MODAL OVERLAY */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -154,25 +154,44 @@
         .modal-content-wide {
             width: 95%;
             max-width: 1200px;
-            padding: 60px 20px;
+            padding: 80px 20px 60px 20px;
             position: relative;
             text-align: center;
         }
 
-        /* The Carousel Track */
+        /* CLOSE BUTTON STYLE */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            font-weight: 200;
+            cursor: pointer;
+            color: var(--gold);
+            line-height: 1;
+            transition: transform 0.3s ease;
+            z-index: 110;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+
+        /* CAROUSEL TRACK */
         .carousel-track {
             display: flex;
             overflow-x: auto;
             gap: 25px;
             padding: 20px 0;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
             scroll-snap-type: x mandatory;
         }
 
-        .carousel-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+        .carousel-track::-webkit-scrollbar { display: none; }
 
         .product-card {
-            flex: 0 0 300px; /* Width of each slide */
+            flex: 0 0 300px;
             scroll-snap-align: start;
             text-align: left;
             border: 1px solid rgba(226, 192, 141, 0.1);
@@ -205,7 +224,7 @@
             line-height: 1.5;
             opacity: 0.7;
             margin-bottom: 20px;
-            height: 40px; /* Keeps layout consistent */
+            height: 40px;
             overflow: hidden;
         }
 
@@ -219,14 +238,13 @@
             padding-bottom: 2px;
         }
 
-        .close-btn { position: absolute; top: 0; right: 20px; font-size: 30px; cursor: pointer; color: var(--gold); }
-
         /* MOBILE */
         @media (max-width: 768px) {
             .arrivals-container { flex-direction: column; text-align: center; }
             .arrivals-text { text-align: center; order: 2; }
             .arrivals-image-slot { width: 100%; order: 1; }
             .product-card { flex: 0 0 80%; }
+            .close-btn { right: 20px; top: 10px; }
         }
     </style>
 </head>
@@ -263,6 +281,7 @@
     <div class="modal-overlay" id="arrivalsModal">
         <div class="modal-content-wide">
             <span class="close-btn" onclick="closeModal('arrivalsModal')">&times;</span>
+            
             <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px;">The New Arrivals</h2>
             
             <div class="carousel-track">
@@ -322,9 +341,21 @@
     </div>
 
     <script>
-        function openModal(id) { document.getElementById(id).style.display = "flex"; }
-        function closeModal(id) { document.getElementById(id).style.display = "none"; }
-        window.onclick = function(event) { if (event.target.className === 'modal-overlay') { event.target.style.display = "none"; } }
+        function openModal(id) { 
+            document.getElementById(id).style.display = "flex"; 
+            document.body.style.overflow = "hidden"; // Prevent home page scroll while modal is open
+        }
+        function closeModal(id) { 
+            document.getElementById(id).style.display = "none"; 
+            document.body.style.overflow = "auto"; 
+        }
+        // Close if user clicks background
+        window.onclick = function(event) { 
+            if (event.target.className === 'modal-overlay') { 
+                event.target.style.display = "none"; 
+                document.body.style.overflow = "auto";
+            } 
+        }
     </script>
 
 </body>
