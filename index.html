@@ -97,7 +97,7 @@
             margin-top: 35px;
         }
 
-        /* NEW ARRIVALS SECTION */
+        /* NEW ARRIVALS MAIN SECTION */
         .new-arrivals-section {
             width: 100%;
             min-height: 80vh;
@@ -200,26 +200,79 @@
             position: relative;
         }
 
-        /* Large Arrival Modal Override */
+        /* Large Modal Slider Styles */
         .modal-content.large {
-            max-width: 900px;
-            max-height: 80vh;
-            overflow-y: auto;
+            max-width: 1000px;
+            width: 90%;
+            padding: 60px;
         }
 
-        .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .vertical-link-stack { display: flex; flex-direction: column; gap: 15px; }
-        .grid-item { border: 1px solid rgba(226, 192, 141, 0.2); padding: 18px; color: var(--gold); text-decoration: none; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; transition: all 0.3s ease; text-align: center; cursor: pointer; }
-        .grid-item:hover { background-color: var(--gold); color: var(--burgundy); }
+        .arrival-slide {
+            display: none; /* Controlled by JS */
+            flex-direction: row;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+        }
+
+        .arrival-slide.active {
+            display: flex;
+        }
+
+        .slide-info { flex: 1; }
+
+        .slide-img-box {
+            flex: 1.2;
+            aspect-ratio: 4/5;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(226, 192, 141, 0.1);
+        }
+
+        .slide-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .desc-text {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.8;
+            margin: 20px 0 30px 0;
+        }
+
+        /* Slider Nav Buttons */
+        .slider-nav {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-arrow {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+        }
+
+        .nav-arrow:hover {
+            background: var(--gold);
+            color: var(--burgundy);
+        }
+
         .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; }
 
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 768px) {
-            .arrivals-container { flex-direction: column; text-align: center; }
-            .arrivals-text { text-align: center; order: 2; }
-            .arrivals-image-slot { width: 100%; order: 1; }
-            .navbar { padding: 40px 0 20px 0; }
-            .nav-links a { font-size: 10px; letter-spacing: 0.15em; }
+            .arrivals-container, .arrival-slide.active { flex-direction: column; text-align: center; }
+            .arrivals-text, .slide-info { text-align: center; order: 2; }
+            .arrivals-image-slot, .slide-img-box { width: 100%; order: 1; }
+            .modal-content.large { padding: 40px 20px; height: 90vh; overflow-y: auto; }
+            .slider-nav { justify-content: center; }
         }
     </style>
 </head>
@@ -249,7 +302,7 @@
                 <button class="slide-btn" onclick="openModal('arrivalsModal')">Explore Collection</button>
             </div>
             <div class="arrivals-image-slot">
-                <img src="https://via.placeholder.com/800x1000/4a0e0e/e2c08d?text=Product+Image" alt="New Arrival">
+                <img src="https://via.placeholder.com/800x1000/4a0e0e/e2c08d?text=Featured+Arrival" alt="New Arrival">
             </div>
         </div>
     </section>
@@ -257,13 +310,37 @@
     <div class="modal-overlay" id="arrivalsModal">
         <div class="modal-content large">
             <span class="close-btn" onclick="closeModal('arrivalsModal')">&times;</span>
-            <h2 style="letter-spacing: 0.3em; text-transform: uppercase;">The New Arrivals</h2>
-            <div class="link-grid" style="margin-top: 30px;">
-                <div class="grid-item">Product One <br><small>$250</small></div>
-                <div class="grid-item">Product Two <br><small>$420</small></div>
-                <div class="grid-item">Product Three <br><small>$315</small></div>
-                <div class="grid-item">Product Four <br><small>$190</small></div>
+            
+            <div class="arrival-slide active">
+                <div class="slide-info">
+                    <span class="slide-label">Item 01</span>
+                    <h2 class="slide-title">Velvet<br>Dusk</h2>
+                    <p class="desc-text">A masterpiece of texture and deep hues, designed for the bold and the refined.</p>
+                    <div class="slider-nav">
+                        <button class="nav-arrow" onclick="changeSlide(-1)">Prev</button>
+                        <button class="nav-arrow" onclick="changeSlide(1)">Next</button>
+                    </div>
+                </div>
+                <div class="slide-img-box">
+                    <img src="https://via.placeholder.com/600x800/2a0505/e2c08d?text=Arrival+01" alt="Arrival 1">
+                </div>
             </div>
+
+            <div class="arrival-slide">
+                <div class="slide-info">
+                    <span class="slide-label">Item 02</span>
+                    <h2 class="slide-title">Golden<br>Relic</h2>
+                    <p class="desc-text">Timeless accents that capture the essence of maximalist luxury in every detail.</p>
+                    <div class="slider-nav">
+                        <button class="nav-arrow" onclick="changeSlide(-1)">Prev</button>
+                        <button class="nav-arrow" onclick="changeSlide(1)">Next</button>
+                    </div>
+                </div>
+                <div class="slide-img-box">
+                    <img src="https://via.placeholder.com/600x800/2a0505/e2c08d?text=Arrival+02" alt="Arrival 2">
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -271,7 +348,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
             <h2 style="letter-spacing: 0.3em; text-transform: uppercase;">About Us</h2>
-            <p style="line-height: 1.8; font-size: 14px; opacity: 0.9;">Maxximalist is a curated space for those who believe more is more. We bring together an unlimited collection of bold identities and refined goods.</p>
+            <p style="line-height: 1.8; font-size: 14px; opacity: 0.9;">Maxximalist is a curated space for those who believe more is more.</p>
         </div>
     </div>
 
@@ -279,11 +356,9 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('shopModal')">&times;</span>
             <h2 style="letter-spacing: 0.3em; text-transform: uppercase;">Shop by Mood</h2>
-            <div class="link-grid" style="margin-top: 20px;">
-                <a href="#" class="grid-item">Midnight Noir</a>
-                <a href="#" class="grid-item">Golden Era</a>
-                <a href="#" class="grid-item">Velvet Silence</a>
-                <a href="#" class="grid-item">Ethereal Bloom</a>
+            <div class="link-grid" style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <a href="#" style="border: 1px solid rgba(226,192,141,0.2); padding: 15px; color: var(--gold); text-decoration: none; text-transform: uppercase; font-size: 12px;">Midnight</a>
+                <a href="#" style="border: 1px solid rgba(226,192,141,0.2); padding: 15px; color: var(--gold); text-decoration: none; text-transform: uppercase; font-size: 12px;">Gold</a>
             </div>
         </div>
     </div>
@@ -292,18 +367,25 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
             <h2 style="letter-spacing: 0.3em; text-transform: uppercase;">Connect</h2>
-            <div class="vertical-link-stack" style="margin-top: 20px;">
-                <a href="https://www.instagram.com/maxximalist_?" target="_blank" class="grid-item">Instagram</a>
-                <a href="https://youtube.com/@maxximalist-q2n" target="_blank" class="grid-item">YouTube</a>
-                <a href="mailto:maxximalist07@gmail.com" class="grid-item">Email Us</a>
-            </div>
+            <p style="color: var(--gold); margin-top: 20px;">maxximalist07@gmail.com</p>
         </div>
     </div>
 
     <script>
+        // Modal Logic
         function openModal(id) { document.getElementById(id).style.display = "flex"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
         window.onclick = function(event) { if (event.target.className === 'modal-overlay') { event.target.style.display = "none"; } }
+
+        // Slider Logic
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.arrival-slide');
+
+        function changeSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
     </script>
 
 </body>
