@@ -19,6 +19,7 @@
             font-family: 'Cinzel', serif;
             color: var(--gold);
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* NAVIGATION BAR */
@@ -89,18 +90,10 @@
             opacity: 0.8;
         }
 
-        .separator-line {
-            width: 60px;
-            height: 1px;
-            background-color: var(--gold);
-            opacity: 0.4;
-            margin-top: 35px;
-        }
-
         /* NEW ARRIVALS MAIN SECTION */
         .new-arrivals-section {
             width: 100%;
-            min-height: 80vh;
+            min-height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -117,45 +110,16 @@
             gap: 50px;
         }
 
-        .arrivals-text {
-            flex: 1;
-            text-align: left;
-        }
+        .arrivals-text { flex: 1; text-align: left; }
 
         .arrivals-image-slot {
             flex: 1;
             aspect-ratio: 4/5;
             border: 1px solid rgba(226, 192, 141, 0.3);
             background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
         }
 
-        .arrivals-image-slot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-        }
-
-        .slide-label {
-            font-size: 11px;
-            letter-spacing: 0.6em;
-            text-transform: uppercase;
-            opacity: 0.6;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .slide-title {
-            font-family: 'Bodoni Moda', serif;
-            font-style: italic;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            margin: 0 0 30px 0;
-            line-height: 1.1;
-        }
+        .arrivals-image-slot img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
 
         .slide-btn {
             padding: 15px 40px;
@@ -163,19 +127,16 @@
             background: transparent;
             color: var(--gold);
             font-family: 'Cinzel', serif;
-            font-size: 12px;
+            font-size: 11px;
             letter-spacing: 0.3em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: 0.4s;
         }
 
-        .slide-btn:hover {
-            background-color: var(--gold);
-            color: var(--burgundy);
-        }
+        .slide-btn:hover { background: var(--gold); color: var(--burgundy); }
 
-        /* MODAL STYLES */
+        /* MODAL & MULTI-SLIDE CAROUSEL */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -187,92 +148,85 @@
             justify-content: center;
             align-items: center;
             z-index: 100;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(15px);
         }
 
-        .modal-content {
-            background-color: var(--burgundy);
-            border: 1px solid rgba(226, 192, 141, 0.3);
-            padding: 50px 40px;
-            max-width: 450px;
-            width: 85%;
-            text-align: center;
+        .modal-content-wide {
+            width: 95%;
+            max-width: 1200px;
+            padding: 60px 20px;
             position: relative;
+            text-align: center;
         }
 
-        /* Large Modal Slider Styles */
-        .modal-content.large {
-            max-width: 1000px;
-            width: 90%;
-            padding: 60px;
+        /* The Carousel Track */
+        .carousel-track {
+            display: flex;
+            overflow-x: auto;
+            gap: 25px;
+            padding: 20px 0;
+            scrollbar-width: none; /* Firefox */
+            scroll-snap-type: x mandatory;
         }
 
-        .arrival-slide {
-            display: none; /* Controlled by JS */
-            flex-direction: row;
-            align-items: center;
-            gap: 40px;
+        .carousel-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+        .product-card {
+            flex: 0 0 300px; /* Width of each slide */
+            scroll-snap-align: start;
             text-align: left;
-        }
-
-        .arrival-slide.active {
-            display: flex;
-        }
-
-        .slide-info { flex: 1; }
-
-        .slide-img-box {
-            flex: 1.2;
-            aspect-ratio: 4/5;
-            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(226, 192, 141, 0.1);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.3s;
         }
 
-        .slide-img-box img {
+        .product-card:hover { border-color: var(--gold); }
+
+        .card-img-slot {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            aspect-ratio: 1/1;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 20px;
+            overflow: hidden;
         }
 
-        .desc-text {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.8;
-            margin: 20px 0 30px 0;
+        .card-img-slot img { width: 100%; height: 100%; object-fit: cover; }
+
+        .card-title {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
         }
 
-        /* Slider Nav Buttons */
-        .slider-nav {
-            margin-top: 30px;
-            display: flex;
-            gap: 20px;
+        .card-desc {
+            font-size: 12px;
+            line-height: 1.5;
+            opacity: 0.7;
+            margin-bottom: 20px;
+            height: 40px; /* Keeps layout consistent */
+            overflow: hidden;
         }
 
-        .nav-arrow {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 10px 20px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
+        .view-btn {
             font-size: 10px;
             letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 2px;
         }
 
-        .nav-arrow:hover {
-            background: var(--gold);
-            color: var(--burgundy);
-        }
+        .close-btn { position: absolute; top: 0; right: 20px; font-size: 30px; cursor: pointer; color: var(--gold); }
 
-        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; }
-
-        /* MOBILE ADJUSTMENTS */
+        /* MOBILE */
         @media (max-width: 768px) {
-            .arrivals-container, .arrival-slide.active { flex-direction: column; text-align: center; }
-            .arrivals-text, .slide-info { text-align: center; order: 2; }
-            .arrivals-image-slot, .slide-img-box { width: 100%; order: 1; }
-            .modal-content.large { padding: 40px 20px; height: 90vh; overflow-y: auto; }
-            .slider-nav { justify-content: center; }
+            .arrivals-container { flex-direction: column; text-align: center; }
+            .arrivals-text { text-align: center; order: 2; }
+            .arrivals-image-slot { width: 100%; order: 1; }
+            .product-card { flex: 0 0 80%; }
         }
     </style>
 </head>
@@ -282,7 +236,7 @@
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a onclick="openModal('aboutModal')">About</a></li>
-            <li><a onclick="openModal('shopModal')">Shop</a></li>
+            <li><a onclick="openModal('arrivalsModal')">Shop</a></li>
             <li><a onclick="openModal('contactModal')">Contact</a></li>
         </ul>
     </nav>
@@ -291,101 +245,86 @@
         <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Symbol" class="brand-symbol">
         <h1 class="brand-title">Maxximalist</h1>
         <p class="tagline">Shop the Unlimited</p>
-        <div class="separator-line"></div>
     </main>
 
     <section class="new-arrivals-section">
         <div class="arrivals-container">
             <div class="arrivals-text">
-                <span class="slide-label">The Latest Drop</span>
-                <h2 class="slide-title">New<br>Arrivals</h2>
+                <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 20px;">Curated Drops</span>
+                <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 4rem; margin: 0 0 30px 0;">New Arrivals</h2>
                 <button class="slide-btn" onclick="openModal('arrivalsModal')">Explore Collection</button>
             </div>
             <div class="arrivals-image-slot">
-                <img src="https://via.placeholder.com/800x1000/4a0e0e/e2c08d?text=Featured+Arrival" alt="New Arrival">
+                <img src="https://via.placeholder.com/800x1000/2a0505/e2c08d?text=New+Collection" alt="Arrivals">
             </div>
         </div>
     </section>
 
     <div class="modal-overlay" id="arrivalsModal">
-        <div class="modal-content large">
+        <div class="modal-content-wide">
             <span class="close-btn" onclick="closeModal('arrivalsModal')">&times;</span>
+            <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px;">The New Arrivals</h2>
             
-            <div class="arrival-slide active">
-                <div class="slide-info">
-                    <span class="slide-label">Item 01</span>
-                    <h2 class="slide-title">Velvet<br>Dusk</h2>
-                    <p class="desc-text">A masterpiece of texture and deep hues, designed for the bold and the refined.</p>
-                    <div class="slider-nav">
-                        <button class="nav-arrow" onclick="changeSlide(-1)">Prev</button>
-                        <button class="nav-arrow" onclick="changeSlide(1)">Next</button>
+            <div class="carousel-track">
+                <div class="product-card">
+                    <div class="card-img-slot">
+                        <img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+01" alt="Product">
                     </div>
+                    <h3 class="card-title">Velvet Dusk</h3>
+                    <p class="card-desc">Hand-stitched velvet with deep crimson undertones.</p>
+                    <a href="#" class="view-btn">View Item</a>
                 </div>
-                <div class="slide-img-box">
-                    <img src="https://via.placeholder.com/600x800/2a0505/e2c08d?text=Arrival+01" alt="Arrival 1">
+
+                <div class="product-card">
+                    <div class="card-img-slot">
+                        <img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+02" alt="Product">
+                    </div>
+                    <h3 class="card-title">Golden Relic</h3>
+                    <p class="card-desc">Antique gold finishes meet modern silhouettes.</p>
+                    <a href="#" class="view-btn">View Item</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="card-img-slot">
+                        <img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+03" alt="Product">
+                    </div>
+                    <h3 class="card-title">Midnight Silk</h3>
+                    <p class="card-desc">Seamless silk drape in an obsidian palette.</p>
+                    <a href="#" class="view-btn">View Item</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="card-img-slot">
+                        <img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+04" alt="Product">
+                    </div>
+                    <h3 class="card-title">Ivory Bloom</h3>
+                    <p class="card-desc">Fresh white textures with intricate lily motifs.</p>
+                    <a href="#" class="view-btn">View Item</a>
                 </div>
             </div>
-
-            <div class="arrival-slide">
-                <div class="slide-info">
-                    <span class="slide-label">Item 02</span>
-                    <h2 class="slide-title">Golden<br>Relic</h2>
-                    <p class="desc-text">Timeless accents that capture the essence of maximalist luxury in every detail.</p>
-                    <div class="slider-nav">
-                        <button class="nav-arrow" onclick="changeSlide(-1)">Prev</button>
-                        <button class="nav-arrow" onclick="changeSlide(1)">Next</button>
-                    </div>
-                </div>
-                <div class="slide-img-box">
-                    <img src="https://via.placeholder.com/600x800/2a0505/e2c08d?text=Arrival+02" alt="Arrival 2">
-                </div>
-            </div>
-
         </div>
     </div>
 
     <div class="modal-overlay" id="aboutModal">
-        <div class="modal-content">
+        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2);">
             <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
-            <h2 style="letter-spacing: 0.3em; text-transform: uppercase;">About Us</h2>
-            <p style="line-height: 1.8; font-size: 14px; opacity: 0.9;">Maxximalist is a curated space for those who believe more is more.</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="shopModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('shopModal')">&times;</span>
-            <h2 style="letter-spacing: 0.3em; text-transform: uppercase;">Shop by Mood</h2>
-            <div class="link-grid" style="margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                <a href="#" style="border: 1px solid rgba(226,192,141,0.2); padding: 15px; color: var(--gold); text-decoration: none; text-transform: uppercase; font-size: 12px;">Midnight</a>
-                <a href="#" style="border: 1px solid rgba(226,192,141,0.2); padding: 15px; color: var(--gold); text-decoration: none; text-transform: uppercase; font-size: 12px;">Gold</a>
-            </div>
+            <h2 style="text-transform: uppercase; letter-spacing: 0.2em;">About</h2>
+            <p style="font-size: 14px; opacity: 0.8; line-height: 1.8;">Maxximalist: Where more is always more. Curating the unlimited.</p>
         </div>
     </div>
 
     <div class="modal-overlay" id="contactModal">
-        <div class="modal-content">
+        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2);">
             <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
-            <h2 style="letter-spacing: 0.3em; text-transform: uppercase;">Connect</h2>
-            <p style="color: var(--gold); margin-top: 20px;">maxximalist07@gmail.com</p>
+            <h2 style="text-transform: uppercase; letter-spacing: 0.2em;">Contact</h2>
+            <p style="font-size: 14px;">maxximalist07@gmail.com</p>
         </div>
     </div>
 
     <script>
-        // Modal Logic
         function openModal(id) { document.getElementById(id).style.display = "flex"; }
         function closeModal(id) { document.getElementById(id).style.display = "none"; }
         window.onclick = function(event) { if (event.target.className === 'modal-overlay') { event.target.style.display = "none"; } }
-
-        // Slider Logic
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.arrival-slide');
-
-        function changeSlide(direction) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
-            slides[currentSlide].classList.add('active');
-        }
     </script>
 
 </body>
