@@ -177,7 +177,7 @@
             color: var(--gold);
         }
 
-        /* MODAL & MOOD GRID */
+        /* MODAL */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -198,44 +198,6 @@
             padding: 80px 20px 40px 20px;
             position: relative;
             text-align: center;
-        }
-
-        .mood-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .mood-card {
-            border: 1px solid rgba(226, 192, 141, 0.1);
-            padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.02);
-            transition: 0.4s;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .mood-card:hover {
-            border-color: var(--gold);
-            background: rgba(226, 192, 141, 0.05);
-            transform: translateY(-5px);
-        }
-
-        .mood-title {
-            font-family: 'Bodoni Moda', serif;
-            font-style: italic;
-            font-size: 1.8rem;
-            color: var(--gold);
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .mood-desc {
-            font-size: 11px;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            opacity: 0.6;
         }
 
         .close-btn { 
@@ -273,7 +235,7 @@
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a onclick="openModal('aboutModal')">About</a></li>
-            <li><a onclick="openModal('moodModal')">Shop By Mood</a></li>
+            <li><a onclick="openModal('shopModal')">Shop</a></li>
             <li><a onclick="openModal('contactModal')">Contact</a></li>
         </ul>
     </nav>
@@ -289,7 +251,7 @@
             <div class="arrivals-text">
                 <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 20px;">Curated Drops</span>
                 <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 4rem; margin: 0 0 30px 0;">New Arrivals</h2>
-                <button class="slide-btn" onclick="openModal('moodModal')">Explore Collection</button>
+                <button class="slide-btn" onclick="openModal('shopModal')">Explore Collection</button>
             </div>
             <div class="arrivals-image-slot">
                 <img src="https://via.placeholder.com/800x1000/2a0505/e2c08d?text=New+Collection" alt="Arrivals">
@@ -310,28 +272,11 @@
         </div>
     </section>
 
-    <div class="modal-overlay" id="moodModal">
-        <div class="modal-content-wide">
-            <span class="close-btn" onclick="closeModal('moodModal')">&times;</span>
-            <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px;">Shop By Mood</h2>
-            <div class="mood-grid">
-                <a href="#" class="mood-card">
-                    <span class="mood-title">Ethereal</span>
-                    <span class="mood-desc">Light, Airy, and Dreaming</span>
-                </a>
-                <a href="#" class="mood-card">
-                    <span class="mood-title">Regal</span>
-                    <span class="mood-desc">Bold, Gold, and Majestic</span>
-                </a>
-                <a href="#" class="mood-card">
-                    <span class="mood-title">Noir</span>
-                    <span class="mood-desc">Dark, Moody, and Mysterious</span>
-                </a>
-                <a href="#" class="mood-card">
-                    <span class="mood-title">Vibrant</span>
-                    <span class="mood-desc">Loud, Colorful, and Energetic</span>
-                </a>
-            </div>
+    <div class="modal-overlay" id="shopModal">
+        <div class="modal-content-wide" style="max-width: 600px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2);">
+            <span class="close-btn" onclick="closeModal('shopModal')">&times;</span>
+            <h2 style="text-transform: uppercase; letter-spacing: 0.4em; font-size: 2rem; margin-bottom: 20px;">Shop</h2>
+            <p style="font-size: 16px; opacity: 0.8; line-height: 1.8; letter-spacing: 0.1em;">The unlimited collection is currently being curated. Check back soon for the full experience.</p>
         </div>
     </div>
 
