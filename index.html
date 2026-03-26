@@ -240,13 +240,39 @@
             cursor: pointer;
         }
 
-        /* MOBILE */
+        /* MOBILE ADJUSTMENTS */
         @media (max-width: 768px) {
-            .arrivals-container { flex-direction: column; text-align: center; }
-            .arrivals-text { text-align: center; order: 2; }
-            .arrivals-image-slot { width: 100%; order: 1; }
+            /* Navbar: Smaller with more space between tabs */
+            .navbar {
+                padding: 15px 0 10px 0;
+            }
+            .nav-links {
+                gap: 20px; /* Space between links */
+                padding: 0 10px;
+            }
+            .nav-links a {
+                font-size: 11px;
+                letter-spacing: 0.15em;
+            }
+
+            /* New Arrivals: Text first, then image below */
+            .arrivals-container { 
+                flex-direction: column; 
+                text-align: center; 
+                gap: 30px;
+            }
+            .arrivals-text { 
+                order: 1; /* Forces text to top */
+                text-align: center;
+            }
+            .arrivals-image-slot { 
+                order: 2; /* Forces image to bottom */
+                width: 100%; 
+            }
+
             .product-card { flex: 0 0 75%; }
             .modal-content-wide { padding-top: 60px; }
+            .brand-title { font-size: 3.5rem; }
         }
     </style>
 </head>
@@ -284,7 +310,6 @@
         <div class="modal-content-wide">
             <span class="close-btn" onclick="closeModal('arrivalsModal')">&times;</span>
             <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px;">The New Arrivals</h2>
-            
             <div class="carousel-track">
                 <div class="product-card">
                     <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+01" alt="Product"></div>
@@ -292,28 +317,24 @@
                     <p class="card-desc">Hand-stitched velvet with deep crimson undertones.</p>
                     <a href="#" class="view-btn">View Item</a>
                 </div>
-
                 <div class="product-card">
                     <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+02" alt="Product"></div>
                     <h3 class="card-title">Golden Relic</h3>
                     <p class="card-desc">Antique gold finishes meet modern silhouettes.</p>
                     <a href="#" class="view-btn">View Item</a>
                 </div>
-
                 <div class="product-card">
                     <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+03" alt="Product"></div>
                     <h3 class="card-title">Midnight Silk</h3>
                     <p class="card-desc">Seamless silk drape in an obsidian palette.</p>
                     <a href="#" class="view-btn">View Item</a>
                 </div>
-
                 <div class="product-card">
                     <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+04" alt="Product"></div>
                     <h3 class="card-title">Ivory Bloom</h3>
                     <p class="card-desc">Fresh white textures with intricate lily motifs.</p>
                     <a href="#" class="view-btn">View Item</a>
                 </div>
-
                 <div class="product-card shop-all-card" onclick="location.href='#'">
                     <span style="font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;">Shop All Arrivals</span>
                 </div>
