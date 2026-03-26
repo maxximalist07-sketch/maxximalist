@@ -177,7 +177,7 @@
             color: var(--gold);
         }
 
-        /* MODAL & CAROUSEL */
+        /* MODAL & MOOD GRID */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -200,6 +200,44 @@
             text-align: center;
         }
 
+        .mood-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .mood-card {
+            border: 1px solid rgba(226, 192, 141, 0.1);
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.4s;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .mood-card:hover {
+            border-color: var(--gold);
+            background: rgba(226, 192, 141, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .mood-title {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 1.8rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .mood-desc {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
         .close-btn { 
             position: absolute; 
             top: 20px; 
@@ -213,74 +251,6 @@
 
         .close-btn:hover { opacity: 0.6; }
 
-        .carousel-track {
-            display: flex;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 20px 0;
-            scrollbar-width: none;
-            scroll-snap-type: x mandatory;
-        }
-
-        .carousel-track::-webkit-scrollbar { display: none; }
-
-        .product-card {
-            flex: 0 0 280px; 
-            scroll-snap-align: start;
-            text-align: left;
-            border: 1px solid rgba(226, 192, 141, 0.1);
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.02);
-            transition: 0.3s;
-        }
-
-        .product-card:hover { border-color: var(--gold); }
-
-        .card-img-slot {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: rgba(255, 255, 255, 0.05);
-            margin-bottom: 15px;
-            overflow: hidden;
-        }
-
-        .card-img-slot img { width: 100%; height: 100%; object-fit: cover; }
-
-        .card-title {
-            font-family: 'Bodoni Moda', serif;
-            font-style: italic;
-            font-size: 1.3rem;
-            margin: 0 0 8px 0;
-        }
-
-        .card-desc {
-            font-size: 11px;
-            line-height: 1.5;
-            opacity: 0.7;
-            margin-bottom: 15px;
-            height: 34px;
-            overflow: hidden;
-        }
-
-        .view-btn {
-            font-size: 10px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            text-decoration: none;
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 2px;
-        }
-
-        .shop-all-card {
-            flex: 0 0 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px dashed rgba(226, 192, 141, 0.3);
-            cursor: pointer;
-        }
-
         /* MOBILE ADJUSTMENTS */
         @media (max-width: 768px) {
             .navbar { padding: 15px 0 10px 0; }
@@ -292,7 +262,6 @@
             .arrivals-image-slot { order: 2; width: 100%; }
 
             .categories-grid { grid-template-columns: 1fr; }
-            .product-card { flex: 0 0 75%; }
             .modal-content-wide { padding-top: 60px; }
             .brand-title { font-size: 3.5rem; }
         }
@@ -304,7 +273,7 @@
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a onclick="openModal('aboutModal')">About</a></li>
-            <li><a onclick="openModal('arrivalsModal')">Shop By Mood</a></li>
+            <li><a onclick="openModal('moodModal')">Shop By Mood</a></li>
             <li><a onclick="openModal('contactModal')">Contact</a></li>
         </ul>
     </nav>
@@ -320,7 +289,7 @@
             <div class="arrivals-text">
                 <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 20px;">Curated Drops</span>
                 <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 4rem; margin: 0 0 30px 0;">New Arrivals</h2>
-                <button class="slide-btn" onclick="openModal('arrivalsModal')">Explore Collection</button>
+                <button class="slide-btn" onclick="openModal('moodModal')">Explore Collection</button>
             </div>
             <div class="arrivals-image-slot">
                 <img src="https://via.placeholder.com/800x1000/2a0505/e2c08d?text=New+Collection" alt="Arrivals">
@@ -341,38 +310,27 @@
         </div>
     </section>
 
-    <div class="modal-overlay" id="arrivalsModal">
+    <div class="modal-overlay" id="moodModal">
         <div class="modal-content-wide">
-            <span class="close-btn" onclick="closeModal('arrivalsModal')">&times;</span>
+            <span class="close-btn" onclick="closeModal('moodModal')">&times;</span>
             <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px;">Shop By Mood</h2>
-            <div class="carousel-track">
-                <div class="product-card">
-                    <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+01" alt="Product"></div>
-                    <h3 class="card-title">Velvet Dusk</h3>
-                    <p class="card-desc">Hand-stitched velvet with deep crimson undertones.</p>
-                    <a href="#" class="view-btn">View Item</a>
-                </div>
-                <div class="product-card">
-                    <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+02" alt="Product"></div>
-                    <h3 class="card-title">Golden Relic</h3>
-                    <p class="card-desc">Antique gold finishes meet modern silhouettes.</p>
-                    <a href="#" class="view-btn">View Item</a>
-                </div>
-                <div class="product-card">
-                    <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+03" alt="Product"></div>
-                    <h3 class="card-title">Midnight Silk</h3>
-                    <p class="card-desc">Seamless silk drape in an obsidian palette.</p>
-                    <a href="#" class="view-btn">View Item</a>
-                </div>
-                <div class="product-card">
-                    <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+04" alt="Product"></div>
-                    <h3 class="card-title">Ivory Bloom</h3>
-                    <p class="card-desc">Fresh white textures with intricate lily motifs.</p>
-                    <a href="#" class="view-btn">View Item</a>
-                </div>
-                <div class="product-card shop-all-card" onclick="location.href='#'">
-                    <span style="font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;">Shop All Arrivals</span>
-                </div>
+            <div class="mood-grid">
+                <a href="#" class="mood-card">
+                    <span class="mood-title">Ethereal</span>
+                    <span class="mood-desc">Light, Airy, and Dreaming</span>
+                </a>
+                <a href="#" class="mood-card">
+                    <span class="mood-title">Regal</span>
+                    <span class="mood-desc">Bold, Gold, and Majestic</span>
+                </a>
+                <a href="#" class="mood-card">
+                    <span class="mood-title">Noir</span>
+                    <span class="mood-desc">Dark, Moody, and Mysterious</span>
+                </a>
+                <a href="#" class="mood-card">
+                    <span class="mood-title">Vibrant</span>
+                    <span class="mood-desc">Loud, Colorful, and Energetic</span>
+                </a>
             </div>
         </div>
     </div>
