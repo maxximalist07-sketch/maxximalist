@@ -304,7 +304,7 @@
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
             <li><a onclick="openModal('aboutModal')">About</a></li>
-            <li><a onclick="openModal('arrivalsModal')">Shop</a></li>
+            <li><a onclick="openModal('arrivalsModal')">Shop By Mood</a></li>
             <li><a onclick="openModal('contactModal')">Contact</a></li>
         </ul>
     </nav>
@@ -344,7 +344,7 @@
     <div class="modal-overlay" id="arrivalsModal">
         <div class="modal-content-wide">
             <span class="close-btn" onclick="closeModal('arrivalsModal')">&times;</span>
-            <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px;">The New Arrivals</h2>
+            <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px;">Shop By Mood</h2>
             <div class="carousel-track">
                 <div class="product-card">
                     <div class="card-img-slot"><img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+01" alt="Product"></div>
@@ -388,8 +388,12 @@
     <div class="modal-overlay" id="contactModal">
         <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2);">
             <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
-            <h2 style="text-transform: uppercase; letter-spacing: 0.2em;">Contact</h2>
-            <p style="font-size: 14px;">maxximalist07@gmail.com</p>
+            <h2 style="text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 20px;">Contact</h2>
+            <div style="font-size: 14px; line-height: 2;">
+                <p><a href="mailto:maxximalist07@gmail.com" style="color: var(--gold); text-decoration: none;">Email: maxximalist07@gmail.com</a></p>
+                <p><a href="https://instagram.com/maxximalist_" target="_blank" style="color: var(--gold); text-decoration: none;">Instagram: @maxximalist_</a></p>
+                <p><a href="https://youtube.com/@maxximalist-q2n" target="_blank" style="color: var(--gold); text-decoration: none;">YouTube: @maxximalist-q2n</a></p>
+            </div>
         </div>
     </div>
 
