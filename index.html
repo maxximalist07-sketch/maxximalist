@@ -97,7 +97,7 @@
             margin-top: 35px;
         }
 
-        /* NEW ARRIVALS LARGE SECTION */
+        /* NEW ARRIVALS SECTION */
         .new-arrivals-section {
             width: 100%;
             min-height: 80vh;
@@ -157,7 +157,8 @@
             line-height: 1.1;
         }
 
-        .slide-btn {
+        .slide-btn-link {
+            display: inline-block;
             padding: 15px 40px;
             border: 1px solid var(--gold);
             background: transparent;
@@ -166,11 +167,12 @@
             font-size: 12px;
             letter-spacing: 0.3em;
             text-transform: uppercase;
+            text-decoration: none;
             cursor: pointer;
             transition: all 0.4s ease;
         }
 
-        .slide-btn:hover {
+        .slide-btn-link:hover {
             background-color: var(--gold);
             color: var(--burgundy);
         }
@@ -239,7 +241,7 @@
             <div class="arrivals-text">
                 <span class="slide-label">The Latest Drop</span>
                 <h2 class="slide-title">New<br>Arrivals</h2>
-                <button class="slide-btn" onclick="openModal('shopModal')">Explore Collection</button>
+                <a href="new-arrivals.html" class="slide-btn-link">Explore Collection</a>
             </div>
             <div class="arrivals-image-slot">
                 <img src="https://via.placeholder.com/800x1000/4a0e0e/e2c08d?text=Product+Image" alt="New Arrival">
