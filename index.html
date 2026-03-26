@@ -65,11 +65,29 @@
             padding: 20px;
         }
 
+        /* LOGO ANIMATION */
         .brand-symbol {
             max-height: 120px; 
             width: auto;
             margin-bottom: 25px; 
             opacity: 0.9;
+            filter: drop-shadow(0 0 0px var(--gold));
+            animation: radiate 6s infinite ease-in-out;
+        }
+
+        @keyframes radiate {
+            0% { 
+                transform: rotate(0deg) scale(1); 
+                filter: drop-shadow(0 0 5px rgba(226, 192, 141, 0.2));
+            }
+            50% { 
+                transform: rotate(180deg) scale(1.05); 
+                filter: drop-shadow(0 0 25px rgba(226, 192, 141, 0.6));
+            }
+            100% { 
+                transform: rotate(360deg) scale(1); 
+                filter: drop-shadow(0 0 5px rgba(226, 192, 141, 0.2));
+            }
         }
 
         .brand-title {
@@ -301,7 +319,6 @@
             transition: 0.3s;
         }
 
-        /* Laptop specific close button adjustment */
         #exploreModal .close-btn, #jewelryModal .close-btn {
             top: 30px;
             right: 30px;
@@ -336,7 +353,6 @@
             
             .brand-title { font-size: 3rem; }
 
-            /* JEWELRY MODAL MOBILE FIXES */
             #jewelryModal .modal-content-wide {
                 width: 95%;
                 padding-top: 70px;
@@ -350,7 +366,7 @@
             }
 
             #jewelryModal .categories-grid {
-                grid-template-columns: 1fr; /* Stack vertically on small phones for better tap area */
+                grid-template-columns: 1fr;
             }
         }
     </style>
