@@ -310,10 +310,36 @@
 
         .close-btn:hover { background: var(--gold); color: var(--burgundy); transform: scale(1.1); }
 
+        /* --- MOBILE FIXES --- */
         @media (max-width: 768px) {
             .navbar { padding: 15px 0 10px 0; }
             .nav-links { gap: 15px; padding: 0 10px; }
             .nav-links a { font-size: 10px; letter-spacing: 0.1em; }
+            
+            /* Stack New Arrivals vertically */
+            .arrivals-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .arrivals-text {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Make image full width and clearly visible */
+            .arrivals-image-slot {
+                width: 100%;
+                max-width: 100%;
+                aspect-ratio: 1/1; /* Square for impact on mobile */
+            }
+
+            .slide-btn {
+                margin: 0 auto;
+                width: 80%;
+            }
+
             .categories-grid { grid-template-columns: repeat(2, 1fr); }
             .product-card { min-width: 260px; }
             .explore-scroll-container { padding: 20px; }
