@@ -65,11 +65,20 @@
             padding: 20px;
         }
 
+        /* LOGO ANIMATION - RADIATING */
         .brand-symbol {
             max-height: 120px; 
             width: auto;
             margin-bottom: 25px; 
             opacity: 0.9;
+            filter: drop-shadow(0 0 0px var(--gold));
+            animation: radiate 8s infinite ease-in-out;
+        }
+
+        @keyframes radiate {
+            0% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 5px rgba(226, 192, 141, 0.2)); }
+            50% { transform: rotate(180deg) scale(1.05); filter: drop-shadow(0 0 25px rgba(226, 192, 141, 0.6)); }
+            100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 5px rgba(226, 192, 141, 0.2)); }
         }
 
         .brand-title {
@@ -88,6 +97,77 @@
             text-transform: uppercase;
             margin-top: 15px;
             opacity: 0.8;
+        }
+
+        /* MOOD BOARD SIDEBAR */
+        #mood-board {
+            position: fixed;
+            right: -250px;
+            top: 15%;
+            width: 280px;
+            height: 70vh;
+            background: url('https://i.ibb.co/9m6dm0RZ/IMG-0652.png');
+            background-size: cover;
+            border: 2px solid var(--gold);
+            border-right: none;
+            border-radius: 20px 0 0 20px;
+            z-index: 2000;
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #mood-board.open { right: 0; }
+
+        .mood-handle {
+            position: absolute;
+            left: -50px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 120px;
+            background: url('https://i.ibb.co/9m6dm0RZ/IMG-0652.png');
+            background-size: cover;
+            border: 1px solid var(--gold);
+            border-right: none;
+            cursor: pointer;
+            writing-mode: vertical-rl;
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px 0 0 10px;
+            color: var(--gold);
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .mood-content {
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            padding-top: 20px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 10px;
+        }
+
+        /* DRAGGABLE STICKER */
+        .sticker {
+            width: 50px;
+            height: 50px;
+            cursor: grab;
+            position: absolute;
+            z-index: 3000;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+            touch-action: none;
         }
 
         /* NEW ARRIVALS MAIN SECTION */
@@ -236,6 +316,7 @@
         }
 
         .product-card {
+            position: relative;
             min-width: 320px;
             flex: 0 0 auto;
             border: 1px solid rgba(226, 192, 141, 0.2);
@@ -243,6 +324,20 @@
             padding: 25px;
             text-align: left;
             box-sizing: border-box;
+        }
+
+        .add-sticker-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            z-index: 5;
         }
 
         .product-image-box {
@@ -301,7 +396,6 @@
             transition: 0.3s;
         }
 
-        /* Laptop specific close button adjustment */
         #exploreModal .close-btn, #jewelryModal .close-btn {
             top: 30px;
             right: 30px;
@@ -314,48 +408,27 @@
             .navbar { padding: 15px 0 10px 0; }
             .nav-links { gap: 10px; padding: 0 10px; }
             .nav-links a { font-size: 9px; letter-spacing: 0.1em; }
-            
-            .arrivals-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-
+            .arrivals-container { flex-direction: column; text-align: center; gap: 40px; }
             .arrivals-text { width: 100%; text-align: center; }
-
-            .arrivals-image-slot {
-                width: 100%;
-                aspect-ratio: 1/1;
-            }
-
+            .arrivals-image-slot { width: 100%; aspect-ratio: 1/1; }
             .slide-btn { margin: 0 auto; width: 80%; }
-
             .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .category-card { min-height: 100px; padding: 15px; }
             .category-name { font-size: 1.1rem; }
-            
             .brand-title { font-size: 3rem; }
-
-            /* JEWELRY MODAL MOBILE FIXES */
-            #jewelryModal .modal-content-wide {
-                width: 95%;
-                padding-top: 70px;
-            }
-            
-            #jewelryModal .close-btn { 
-                top: 15px; 
-                right: 15px; 
-                width: 40px; 
-                height: 40px; 
-            }
-
-            #jewelryModal .categories-grid {
-                grid-template-columns: 1fr; /* Stack vertically on small phones for better tap area */
-            }
+            #jewelryModal .modal-content-wide { width: 95%; padding-top: 70px; }
+            #jewelryModal .close-btn { top: 15px; right: 15px; width: 40px; height: 40px; }
+            #jewelryModal .categories-grid { grid-template-columns: 1fr; }
+            #mood-board { width: 220px; right: -190px; }
         }
     </style>
 </head>
 <body>
+
+    <div id="mood-board">
+        <div class="mood-handle" onclick="toggleMoodBoard()">Wishlist</div>
+        <div class="mood-content" id="mood-slots"></div>
+    </div>
 
     <nav class="navbar">
         <ul class="nav-links">
@@ -429,6 +502,7 @@
             <h2 class="explore-title">The New Arrivals</h2>
             <div class="explore-scroll-container">
                 <div class="product-card">
+                    <button class="add-sticker-btn" onclick="spawnSticker(event, 'Velvet Dusk')">+</button>
                     <div class="product-image-box"></div>
                     <div class="product-info">
                         <h3>Velvet Dusk</h3>
@@ -437,6 +511,7 @@
                     </div>
                 </div>
                 <div class="product-card">
+                    <button class="add-sticker-btn" onclick="spawnSticker(event, 'Golden Relic')">+</button>
                     <div class="product-image-box"></div>
                     <div class="product-info">
                         <h3>Golden Relic</h3>
@@ -490,6 +565,59 @@
                 event.target.style.display = "none"; 
                 document.body.style.overflow = "auto";
             } 
+        }
+        
+        function toggleMoodBoard() { document.getElementById('mood-board').classList.toggle('open'); }
+
+        function spawnSticker(e, name) {
+            const sticker = document.createElement('img');
+            sticker.src = 'https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png';
+            sticker.className = 'sticker';
+            sticker.dataset.name = name;
+            sticker.style.left = e.pageX - 25 + 'px';
+            sticker.style.top = e.pageY - 25 + 'px';
+            document.body.appendChild(sticker);
+            makeDraggable(sticker);
+        }
+
+        function makeDraggable(el) {
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            el.onmousedown = dragMouseDown;
+            el.ontouchstart = dragMouseDown;
+
+            function dragMouseDown(e) {
+                e.preventDefault();
+                pos3 = e.clientX || e.touches[0].clientX;
+                pos4 = e.clientY || e.touches[0].clientY;
+                document.onmouseup = closeDragElement;
+                document.ontouchend = closeDragElement;
+                document.onmousemove = elementDrag;
+                document.ontouchmove = elementDrag;
+            }
+
+            function elementDrag(e) {
+                let clientX = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+                let clientY = e.clientY || (e.touches ? e.touches[0].clientY : 0);
+                pos1 = pos3 - clientX;
+                pos2 = pos4 - clientY;
+                pos3 = clientX;
+                pos4 = clientY;
+                el.style.top = (el.offsetTop - pos2) + "px";
+                el.style.left = (el.offsetLeft - pos1) + "px";
+                if (clientX > window.innerWidth - 200) document.getElementById('mood-board').classList.add('open');
+            }
+
+            function closeDragElement(e) {
+                document.onmouseup = null; document.onmousemove = null;
+                let finalX = e.clientX || (e.changedTouches ? e.changedTouches[0].clientX : 0);
+                if (finalX > window.innerWidth - 280) {
+                    const slot = document.getElementById('mood-slots');
+                    const item = document.createElement('div');
+                    item.innerHTML = `<img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" style="width:50px; margin:5px;"><p style="font-size:8px; margin:0;">${el.dataset.name}</p>`;
+                    slot.appendChild(item);
+                    el.remove();
+                }
+            }
         }
     </script>
 </body>
