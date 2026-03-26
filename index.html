@@ -65,20 +65,19 @@
             padding: 20px;
         }
 
-        /* LOGO ANIMATION - RADIATING */
+        /* SUN LOGO ANIMATION */
         .brand-symbol {
             max-height: 120px; 
             width: auto;
             margin-bottom: 25px; 
             opacity: 0.9;
-            filter: drop-shadow(0 0 0px var(--gold));
-            animation: radiate 8s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(226, 192, 141, 0.3));
+            animation: rotateSun 15s linear infinite; /* Added rotating animation */
         }
 
-        @keyframes radiate {
-            0% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 5px rgba(226, 192, 141, 0.2)); }
-            50% { transform: rotate(180deg) scale(1.05); filter: drop-shadow(0 0 25px rgba(226, 192, 141, 0.6)); }
-            100% { transform: rotate(360deg) scale(1); filter: drop-shadow(0 0 5px rgba(226, 192, 141, 0.2)); }
+        @keyframes rotateSun {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .brand-title {
@@ -159,15 +158,16 @@
             border-radius: 10px;
         }
 
-        /* DRAGGABLE STICKER */
+        /* DRAGGABLE STICKER - ALSO ROTATING */
         .sticker {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             cursor: grab;
             position: absolute;
             z-index: 3000;
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.6));
             touch-action: none;
+            animation: rotateSun 20s linear infinite; /* Rotating stickers */
         }
 
         /* NEW ARRIVALS MAIN SECTION */
@@ -396,11 +396,6 @@
             transition: 0.3s;
         }
 
-        #exploreModal .close-btn, #jewelryModal .close-btn {
-            top: 30px;
-            right: 30px;
-        }
-
         .close-btn:hover { background: var(--gold); color: var(--burgundy); transform: scale(1.1); }
 
         /* --- MOBILE FIXES --- */
@@ -417,8 +412,6 @@
             .category-name { font-size: 1.1rem; }
             .brand-title { font-size: 3rem; }
             #jewelryModal .modal-content-wide { width: 95%; padding-top: 70px; }
-            #jewelryModal .close-btn { top: 15px; right: 15px; width: 40px; height: 40px; }
-            #jewelryModal .categories-grid { grid-template-columns: 1fr; }
             #mood-board { width: 220px; right: -190px; }
         }
     </style>
@@ -440,7 +433,7 @@
     </nav>
 
     <main class="hero-section">
-        <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Symbol" class="brand-symbol">
+        <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Rotating Sun" class="brand-symbol">
         <h1 class="brand-title">Maxximalist</h1>
         <p class="tagline">Shop the Unlimited</p>
     </main>
@@ -574,8 +567,8 @@
             sticker.src = 'https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png';
             sticker.className = 'sticker';
             sticker.dataset.name = name;
-            sticker.style.left = e.pageX - 25 + 'px';
-            sticker.style.top = e.pageY - 25 + 'px';
+            sticker.style.left = e.pageX - 30 + 'px';
+            sticker.style.top = e.pageY - 30 + 'px';
             document.body.appendChild(sticker);
             makeDraggable(sticker);
         }
@@ -587,8 +580,8 @@
 
             function dragMouseDown(e) {
                 e.preventDefault();
-                pos3 = e.clientX || e.touches[0].clientX;
-                pos4 = e.clientY || e.touches[0].clientY;
+                pos3 = e.clientX || (e.touches ? e.touches[0].clientX : 0);
+                pos4 = e.clientY || (e.touches ? e.touches[0].clientY : 0);
                 document.onmouseup = closeDragElement;
                 document.ontouchend = closeDragElement;
                 document.onmousemove = elementDrag;
@@ -613,7 +606,8 @@
                 if (finalX > window.innerWidth - 280) {
                     const slot = document.getElementById('mood-slots');
                     const item = document.createElement('div');
-                    item.innerHTML = `<img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" style="width:50px; margin:5px;"><p style="font-size:8px; margin:0;">${el.dataset.name}</p>`;
+                    item.style.textAlign = "center";
+                    item.innerHTML = `<img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" style="width:50px; margin:5px; animation: rotateSun 15s linear infinite;"><p style="font-size:8px; margin:0;">${el.dataset.name}</p>`;
                     slot.appendChild(item);
                     el.remove();
                 }
