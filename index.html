@@ -55,42 +55,7 @@
             cursor: pointer;
         }
 
-        /* HERO AREA */
-        .hero-section {
-            height: 90vh; 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .brand-symbol {
-            max-height: 120px; 
-            width: auto;
-            margin-bottom: 25px; 
-            opacity: 0.9;
-        }
-
-        .brand-title {
-            font-family: 'Bodoni Moda', serif;
-            font-style: italic;
-            font-weight: 400;
-            font-size: clamp(3.5rem, 15vw, 8.5rem);
-            letter-spacing: -0.02em;
-            margin: 0;
-            text-align: center;
-        }
-
-        .tagline {
-            font-size: 12px;
-            letter-spacing: 0.5em;
-            text-transform: uppercase;
-            margin-top: 15px;
-            opacity: 0.8;
-        }
-
-        /* MAIN ARRIVALS SECTION */
+        /* MAIN PAGE ARRIVALS SECTION */
         .new-arrivals-section {
             width: 100%;
             min-height: 70vh;
@@ -121,7 +86,7 @@
 
         .arrivals-image-slot img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
 
-        .slide-btn {
+        .explore-btn {
             padding: 15px 40px;
             border: 1px solid var(--gold);
             background: transparent;
@@ -134,7 +99,7 @@
             transition: 0.4s;
         }
 
-        .slide-btn:hover { background: var(--gold); color: var(--burgundy); }
+        .explore-btn:hover { background: var(--gold); color: var(--burgundy); }
 
         /* MODAL OVERLAY */
         .modal-overlay {
@@ -153,51 +118,45 @@
 
         .modal-content-wide {
             width: 95%;
-            max-width: 1200px;
-            padding: 80px 20px 60px 20px;
+            max-width: 1100px;
+            padding: 80px 40px 60px 40px;
             position: relative;
-            text-align: center;
+            background: transparent;
         }
 
-        /* CLOSE BUTTON STYLE */
-        .close-btn {
+        /* THE CLOSE BUTTON (X) */
+        .close-arrivals {
             position: absolute;
             top: 20px;
-            right: 30px;
-            font-size: 40px;
+            right: 20px;
+            font-size: 45px;
             font-weight: 200;
             cursor: pointer;
             color: var(--gold);
             line-height: 1;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
             z-index: 110;
         }
 
-        .close-btn:hover {
+        .close-arrivals:hover {
             transform: scale(1.1);
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
-        /* CAROUSEL TRACK */
+        /* CAROUSEL GRID */
         .carousel-track {
-            display: flex;
-            overflow-x: auto;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
             padding: 20px 0;
-            scrollbar-width: none;
-            scroll-snap-type: x mandatory;
         }
-
-        .carousel-track::-webkit-scrollbar { display: none; }
 
         .product-card {
-            flex: 0 0 300px;
-            scroll-snap-align: start;
             text-align: left;
-            border: 1px solid rgba(226, 192, 141, 0.1);
+            border: 1px solid rgba(226, 192, 141, 0.15);
             padding: 20px;
             background: rgba(255, 255, 255, 0.02);
-            transition: 0.3s;
+            transition: border-color 0.3s;
         }
 
         .product-card:hover { border-color: var(--gold); }
@@ -207,7 +166,6 @@
             aspect-ratio: 1/1;
             background: rgba(255, 255, 255, 0.05);
             margin-bottom: 20px;
-            overflow: hidden;
         }
 
         .card-img-slot img { width: 100%; height: 100%; object-fit: cover; }
@@ -215,36 +173,22 @@
         .card-title {
             font-family: 'Bodoni Moda', serif;
             font-style: italic;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin: 0 0 10px 0;
         }
 
         .card-desc {
             font-size: 12px;
-            line-height: 1.5;
+            line-height: 1.6;
             opacity: 0.7;
-            margin-bottom: 20px;
-            height: 40px;
-            overflow: hidden;
+            margin-bottom: 15px;
         }
 
-        .view-btn {
-            font-size: 10px;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--gold);
-            text-decoration: none;
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 2px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 768px) {
+        /* MOBILE FIXES */
+        @media (max-width: 900px) {
+            .carousel-track { grid-template-columns: 1fr; }
+            .modal-content-wide { padding-top: 60px; height: 85vh; overflow-y: auto; }
             .arrivals-container { flex-direction: column; text-align: center; }
-            .arrivals-text { text-align: center; order: 2; }
-            .arrivals-image-slot { width: 100%; order: 1; }
-            .product-card { flex: 0 0 80%; }
-            .close-btn { right: 20px; top: 10px; }
         }
     </style>
 </head>
@@ -253,36 +197,31 @@
     <nav class="navbar">
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
-            <li><a onclick="openModal('aboutModal')">About</a></li>
-            <li><a onclick="openModal('arrivalsModal')">Shop</a></li>
-            <li><a onclick="openModal('contactModal')">Contact</a></li>
+            <li><a onclick="openArrivals()">New Arrivals</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Contact</a></li>
         </ul>
     </nav>
-
-    <main class="hero-section">
-        <img src="https://image2url.com/r2/default/images/1774475442899-b6e9e45a-b829-440f-a057-e31a87f5c5fa.png" alt="Symbol" class="brand-symbol">
-        <h1 class="brand-title">Maxximalist</h1>
-        <p class="tagline">Shop the Unlimited</p>
-    </main>
 
     <section class="new-arrivals-section">
         <div class="arrivals-container">
             <div class="arrivals-text">
-                <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 20px;">Curated Drops</span>
+                <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 20px;">The Latest Drop</span>
                 <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 4rem; margin: 0 0 30px 0;">New Arrivals</h2>
-                <button class="slide-btn" onclick="openModal('arrivalsModal')">Explore Collection</button>
+                <button class="explore-btn" onclick="openArrivals()">Explore Collection</button>
             </div>
             <div class="arrivals-image-slot">
-                <img src="https://via.placeholder.com/800x1000/2a0505/e2c08d?text=New+Collection" alt="Arrivals">
+                <img src="https://via.placeholder.com/800x1000/2a0505/e2c08d?text=Featured+Arrival" alt="Arrivals">
             </div>
         </div>
     </section>
 
     <div class="modal-overlay" id="arrivalsModal">
         <div class="modal-content-wide">
-            <span class="close-btn" onclick="closeModal('arrivalsModal')">&times;</span>
             
-            <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px;">The New Arrivals</h2>
+            <span class="close-arrivals" onclick="closeArrivals()">&times;</span>
+            
+            <h2 style="letter-spacing: 0.4em; text-transform: uppercase; font-size: 14px; margin-bottom: 40px; text-align: center;">The New Arrivals</h2>
             
             <div class="carousel-track">
                 <div class="product-card">
@@ -291,7 +230,6 @@
                     </div>
                     <h3 class="card-title">Velvet Dusk</h3>
                     <p class="card-desc">Hand-stitched velvet with deep crimson undertones.</p>
-                    <a href="#" class="view-btn">View Item</a>
                 </div>
 
                 <div class="product-card">
@@ -300,7 +238,6 @@
                     </div>
                     <h3 class="card-title">Golden Relic</h3>
                     <p class="card-desc">Antique gold finishes meet modern silhouettes.</p>
-                    <a href="#" class="view-btn">View Item</a>
                 </div>
 
                 <div class="product-card">
@@ -309,52 +246,28 @@
                     </div>
                     <h3 class="card-title">Midnight Silk</h3>
                     <p class="card-desc">Seamless silk drape in an obsidian palette.</p>
-                    <a href="#" class="view-btn">View Item</a>
-                </div>
-
-                <div class="product-card">
-                    <div class="card-img-slot">
-                        <img src="https://via.placeholder.com/400/2a0505/e2c08d?text=Item+04" alt="Product">
-                    </div>
-                    <h3 class="card-title">Ivory Bloom</h3>
-                    <p class="card-desc">Fresh white textures with intricate lily motifs.</p>
-                    <a href="#" class="view-btn">View Item</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal-overlay" id="aboutModal">
-        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2);">
-            <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
-            <h2 style="text-transform: uppercase; letter-spacing: 0.2em;">About</h2>
-            <p style="font-size: 14px; opacity: 0.8; line-height: 1.8;">Maxximalist: Where more is always more. Curating the unlimited.</p>
-        </div>
-    </div>
-
-    <div class="modal-overlay" id="contactModal">
-        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2);">
-            <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
-            <h2 style="text-transform: uppercase; letter-spacing: 0.2em;">Contact</h2>
-            <p style="font-size: 14px;">maxximalist07@gmail.com</p>
-        </div>
-    </div>
-
     <script>
-        function openModal(id) { 
-            document.getElementById(id).style.display = "flex"; 
-            document.body.style.overflow = "hidden"; // Prevent home page scroll while modal is open
+        function openArrivals() {
+            document.getElementById('arrivalsModal').style.display = "flex";
+            document.body.style.overflow = "hidden"; // Stops background scrolling
         }
-        function closeModal(id) { 
-            document.getElementById(id).style.display = "none"; 
-            document.body.style.overflow = "auto"; 
+
+        function closeArrivals() {
+            document.getElementById('arrivalsModal').style.display = "none";
+            document.body.style.overflow = "auto"; // Re-enables scrolling
         }
-        // Close if user clicks background
-        window.onclick = function(event) { 
-            if (event.target.className === 'modal-overlay') { 
-                event.target.style.display = "none"; 
-                document.body.style.overflow = "auto";
-            } 
+
+        // Close when clicking the dark background
+        window.onclick = function(event) {
+            let modal = document.getElementById('arrivalsModal');
+            if (event.target == modal) {
+                closeArrivals();
+            }
         }
     </script>
 
