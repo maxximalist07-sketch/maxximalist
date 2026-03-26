@@ -9,7 +9,7 @@
         :root {
             --gold: #e2c08d;
             --burgundy: #4a0e0e;
-            --dark-charcoal: #121212; /* New color for the slider background */
+            --dark-charcoal: #121212; 
         }
 
         body, html {
@@ -19,6 +19,7 @@
             background: radial-gradient(circle, #5e1313 0%, #1a0505 100%);
             font-family: 'Cinzel', serif;
             color: var(--gold);
+            scroll-behavior: smooth;
         }
 
         /* NAVIGATION BAR */
@@ -30,7 +31,8 @@
             z-index: 10;
             position: sticky;
             top: 0;
-            background: inherit;
+            background: rgba(74, 14, 14, 0.8);
+            backdrop-filter: blur(10px);
         }
 
         .nav-links {
@@ -55,7 +57,7 @@
 
         /* HERO AREA */
         .hero-section {
-            height: 80vh; /* Takes up most of the viewport */
+            height: 90vh; 
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -96,49 +98,49 @@
             margin-top: 35px;
         }
 
-        /* NEW ARRIVALS SLIDE SECTION */
+        /* NEW ARRIVALS LARGE SLIDE */
         .new-arrivals-slide {
             width: 100%;
-            height: 400px;
+            height: 70vh; /* Large impactful height */
             background-color: var(--dark-charcoal);
-            border-top: 1px solid rgba(226, 192, 141, 0.1);
-            border-bottom: 1px solid rgba(226, 192, 141, 0.1);
+            border-top: 1px solid rgba(226, 192, 141, 0.2);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            margin-top: 50px;
-            position: relative;
-            overflow: hidden;
+            padding: 40px 20px;
+            box-sizing: border-box;
         }
 
         .slide-label {
-            font-size: 10px;
-            letter-spacing: 0.4em;
+            font-size: 11px;
+            letter-spacing: 0.6em;
             text-transform: uppercase;
-            opacity: 0.5;
-            margin-bottom: 15px;
+            color: var(--gold);
+            opacity: 0.6;
+            margin-bottom: 20px;
         }
 
         .slide-title {
             font-family: 'Bodoni Moda', serif;
-            font-size: clamp(2rem, 8vw, 3.5rem);
             font-style: italic;
-            margin-bottom: 20px;
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            color: var(--gold);
+            margin: 0 0 30px 0;
         }
 
         .slide-btn {
-            padding: 12px 30px;
+            padding: 15px 40px;
             border: 1px solid var(--gold);
             background: transparent;
             color: var(--gold);
             font-family: 'Cinzel', serif;
-            font-size: 11px;
-            letter-spacing: 0.2em;
+            font-size: 12px;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .slide-btn:hover {
@@ -146,7 +148,7 @@
             color: var(--dark-charcoal);
         }
 
-        /* MODAL STYLES (Kept as requested) */
+        /* MODAL STYLES */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -171,7 +173,6 @@
             position: relative;
         }
 
-        /* Grid & Stacks for Modals */
         .vertical-link-stack { display: flex; flex-direction: column; gap: 15px; }
         .link-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .grid-item { border: 1px solid rgba(226, 192, 141, 0.2); padding: 18px; color: var(--gold); text-decoration: none; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; transition: all 0.3s ease; text-align: center; }
@@ -183,7 +184,7 @@
             .navbar { padding: 40px 0 20px 0; }
             .nav-links a { font-size: 10px; letter-spacing: 0.15em; }
             .brand-symbol { max-height: 90px; }
-            .new-arrivals-slide { height: 300px; }
+            .new-arrivals-slide { height: 60vh; }
             .link-grid { grid-template-columns: 1fr; gap: 10px; }
         }
     </style>
@@ -207,7 +208,7 @@
     </main>
 
     <section class="new-arrivals-slide">
-        <span class="slide-label">The Latest Drop</span>
+        <span class="slide-label">The Summer Drop</span>
         <h2 class="slide-title">New Arrivals</h2>
         <button class="slide-btn" onclick="openModal('shopModal')">Explore Collection</button>
     </section>
