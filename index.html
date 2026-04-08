@@ -4,45 +4,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAXXIMALIST | Shop the Unlimited</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. Global Reset - Removes all white gaps and default margins */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            font-family: 'Lora', serif;
+            overflow-x: hidden;
+        }
+
+        /* 2. Navigation Bar - Deep Green Theme */
+        .main-header {
+            background-color: #0a140a; /* Deep forest green to match the vibe */
+            width: 100%;
+            position: fixed; /* Keeps it at the top */
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1a2e1a;
+        }
+
+        .top-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 0;
+        }
+
+        .top-nav li {
+            margin: 0 30px;
+        }
+
+        .top-nav a {
+            color: #d4af37; /* Elegant Gold */
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: #ffffff;
+            letter-spacing: 5px;
+        }
+
+        /* 3. Hero Image Section */
+        .hero-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* This makes the image fill the screen perfectly */
+            display: block;
+        }
+
+        /* 4. Mobile Responsiveness */
+        @media (max-width: 600px) {
+            .top-nav ul {
+                padding: 15px 0;
+            }
+            
+            .top-nav li {
+                margin: 0 10px;
+            }
+
+            .top-nav a {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <header class="main-header">
         <nav class="top-nav">
             <ul>
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="#shop">SHOP</a></li>
-                <li><a href="#about">ABOUT</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">SHOP</a></li>
+                <li><a href="#">CONTACT</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
+    <main class="hero-container">
         <picture>
             <source media="(min-width: 800px)" srcset="https://i.ibb.co/4ZbtDmGP/IMG-0862.png">
-            <img src="https://i.ibb.co/99d2fm6J/IMG-0867.png" alt="Maxximalist Home" class="hero-img">
+            <img src="https://i.ibb.co/99d2fm6J/IMG-0867.png" alt="Maxximalist Home" class="hero-image">
         </picture>
-        
-        <div class="hero-overlay">
-            <h1 class="fade-in">MAXXIMALIST</h1>
-            <p class="fade-in-delay">Shop the unlimited</p>
-        </div>
-    </section>
+    </main>
 
-    <section id="shop" class="content-section">
-        <h2 class="section-title">Shop by Mood</h2>
-        <div class="mood-filters">
-            <button onclick="filterMood('all')">ALL</button>
-            <button onclick="filterMood('bold')">BOLD</button>
-            <button onclick="filterMood('elegant')">ELEGANT</button>
-        </div>
-        <div id="product-grid" class="grid">
-            </div>
-    </section>
-
-    <script src="script.js"></script>
 </body>
 </html>
