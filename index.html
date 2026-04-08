@@ -3,116 +3,510 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MAXXIMALIST | Shop the Unlimited</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora&display=swap" rel="stylesheet">
-    
+    <title>Maxximalist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Cinzel:wght@400&display=swap" rel="stylesheet">
     <style>
-        /* Reset all default browser spacing */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --gold: #e2c08d;
+            --burgundy: #4a0e0e;
         }
 
         body, html {
-            height: 100%;
-            background-color: #000;
-            font-family: 'Lora', serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--burgundy); 
+            background: radial-gradient(circle, #5e1313 0%, #1a0505 100%);
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* Fixed Navigation Bar - Deep Green */
-        .main-header {
-            background-color: #0a140a; 
+        /* NAVIGATION BAR */
+        .navbar {
             width: 100%;
+            border-bottom: 1px solid rgba(226, 192, 141, 0.15);
+            padding: 30px 0 25px 0;
+            box-sizing: border-box;
+            z-index: 10;
+            position: sticky;
+            top: 0;
+            background: rgba(74, 14, 14, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0 auto;
+            padding: 0 5%; 
+            justify-content: space-evenly; 
+            align-items: center;
+            max-width: 900px; 
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gold);
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        /* HERO AREA */
+        .hero-section {
+            height: 90vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* LOGO ANIMATION */
+        .brand-symbol {
+            max-height: 120px; 
+            width: auto;
+            margin-bottom: 25px; 
+            opacity: 0.9;
+            filter: drop-shadow(0 0 0px var(--gold));
+            animation: radiate 6s infinite ease-in-out;
+        }
+
+        @keyframes radiate {
+            0% { 
+                transform: rotate(0deg) scale(1); 
+                filter: drop-shadow(0 0 5px rgba(226, 192, 141, 0.2));
+            }
+            50% { 
+                transform: rotate(180deg) scale(1.05); 
+                filter: drop-shadow(0 0 25px rgba(226, 192, 141, 0.6));
+            }
+            100% { 
+                transform: rotate(360deg) scale(1); 
+                filter: drop-shadow(0 0 5px rgba(226, 192, 141, 0.2));
+            }
+        }
+
+        .brand-title {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-weight: 400;
+            font-size: clamp(3.5rem, 15vw, 8.5rem);
+            letter-spacing: -0.02em;
+            margin: 0;
+            text-align: center;
+        }
+
+        .tagline {
+            font-size: 12px;
+            letter-spacing: 0.5em;
+            text-transform: uppercase;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        /* NEW ARRIVALS MAIN SECTION */
+        .new-arrivals-section {
+            width: 100%;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 10%;
+            box-sizing: border-box;
+            border-top: 1px solid rgba(226, 192, 141, 0.2);
+        }
+
+        .arrivals-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .arrivals-text { flex: 1; text-align: left; }
+
+        .arrivals-image-slot {
+            flex: 1;
+            aspect-ratio: 4/5;
+            border: 1px solid rgba(226, 192, 141, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .arrivals-image-slot img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            opacity: 0.9;
+            transition: 0.5s ease;
+        }
+        
+        .arrivals-image-slot:hover img {
+            opacity: 1;
+            transform: scale(1.02);
+        }
+
+        .slide-btn {
+            padding: 15px 40px;
+            border: 1px solid var(--gold);
+            background: transparent;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .slide-btn:hover { background: var(--gold); color: var(--burgundy); }
+
+        /* CATEGORIES SECTION */
+        .categories-section {
+            width: 100%;
+            padding: 80px 10%;
+            box-sizing: border-box;
+            border-top: 1px solid rgba(226, 192, 141, 0.2);
+            text-align: center;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 40px auto 0 auto;
+        }
+
+        .category-card {
+            border: 1px solid rgba(226, 192, 141, 0.15);
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.4s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 150px;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            border-color: var(--gold);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .category-name {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        /* MODALS */
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #1a2e1a;
-        }
-
-        .top-nav ul {
-            list-style: none;
-            display: flex;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 5, 5, 0.98);
+            display: none; 
             justify-content: center;
             align-items: center;
-            padding: 25px 0;
+            z-index: 100;
+            backdrop-filter: blur(15px);
         }
 
-        .top-nav li {
-            margin: 0 30px;
+        .modal-content-wide {
+            width: 90%;
+            max-width: 1400px;
+            padding: 40px 20px;
+            position: relative;
+            text-align: center;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
-        .top-nav a {
-            color: #d4af37;
-            text-decoration: none;
-            font-family: 'Playfair Display', serif;
-            font-size: 13px;
-            letter-spacing: 3px;
+        .explore-title {
             text-transform: uppercase;
-            transition: 0.3s ease;
+            letter-spacing: 0.6em;
+            font-size: 14px;
+            margin-bottom: 60px;
+            opacity: 0.9;
         }
 
-        .top-nav a:hover {
-            color: #ffffff;
+        .explore-scroll-container {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 20px 40px 60px 40px;
+            scrollbar-width: none;
         }
 
-        /* Hero Section - Fixed to fill the full screen */
-        .hero-container {
-            width: 100vw;
-            height: 100vh;
-            display: block;
+        .explore-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .product-card {
+            min-width: 320px;
+            flex: 0 0 auto;
+            border: 1px solid rgba(226, 192, 141, 0.2);
+            background: rgba(255, 255, 255, 0.02);
+            padding: 25px;
+            text-align: left;
+            box-sizing: border-box;
+        }
+
+        .product-image-box {
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 30px;
             position: relative;
         }
 
-        /* This is the fix for the small image issue */
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* This forces it to fill the laptop screen */
-            display: block;
+        .product-info h3 {
+            font-family: 'Bodoni Moda', serif;
+            font-style: italic;
+            font-size: 24px;
+            margin: 0 0 15px 0;
+            font-weight: 400;
         }
 
-        picture {
-            width: 100%;
-            height: 100%;
+        .product-info p {
+            font-size: 11px;
+            line-height: 1.6;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.7;
+            margin-bottom: 30px;
+            min-height: 40px;
         }
 
-        /* Mobile adjustments */
-        @media (max-width: 600px) {
-            .top-nav ul {
-                padding: 15px 0;
+        .view-item-btn {
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 5px;
+        }
+
+        /* REFINED CLOSE BUTTONS */
+        .close-btn { 
+            position: absolute; 
+            top: 20px; 
+            right: 20px; 
+            font-size: 24px; 
+            cursor: pointer; 
+            color: var(--gold);
+            background: rgba(0, 0, 0, 0.5); 
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            z-index: 1000;
+            transition: 0.3s;
+        }
+
+        #exploreModal .close-btn, #jewelryModal .close-btn {
+            top: 30px;
+            right: 30px;
+        }
+
+        .close-btn:hover { background: var(--gold); color: var(--burgundy); transform: scale(1.1); }
+
+        /* --- MOBILE FIXES --- */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 0 10px 0; }
+            .nav-links { gap: 10px; padding: 0 10px; }
+            .nav-links a { font-size: 9px; letter-spacing: 0.1em; }
+            
+            .arrivals-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
             }
-            .top-nav li {
-                margin: 0 10px;
+
+            .arrivals-text { width: 100%; text-align: center; }
+
+            .arrivals-image-slot {
+                width: 100%;
+                aspect-ratio: 1/1;
             }
-            .top-nav a {
-                font-size: 10px;
-                letter-spacing: 1px;
+
+            .slide-btn { margin: 0 auto; width: 80%; }
+
+            .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .category-card { min-height: 100px; padding: 15px; }
+            .category-name { font-size: 1.1rem; }
+            
+            .brand-title { font-size: 3rem; }
+
+            #jewelryModal .modal-content-wide {
+                width: 95%;
+                padding-top: 70px;
+            }
+            
+            #jewelryModal .close-btn { 
+                top: 15px; 
+                right: 15px; 
+                width: 40px; 
+                height: 40px; 
+            }
+
+            #jewelryModal .categories-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <nav class="top-nav">
-            <ul>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">SHOP</a></li>
-                <li><a href="#">CONTACT</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a onclick="openModal('aboutModal')">About</a></li>
+            <li><a onclick="openModal('shopModal')">Shop</a></li>
+            <li><a onclick="openModal('contactModal')">Contact</a></li>
+        </ul>
+    </nav>
 
-    <main class="hero-container">
-        <picture>
-            <source media="(min-width: 800px)" srcset="https://i.ibb.co/4ZbtDmGP/IMG-0862.png">
-            <img src="https://i.ibb.co/99d2fm6J/IMG-0867.png" alt="Maxximalist Home" class="hero-image">
-        </picture>
+    <main class="hero-section">
+        <a href="https://ibb.co/hRG9n7jD"><img src="https://i.ibb.co/4ZbtDmGP/IMG-0862.png" alt="IMG-0862" border="0"></a>
+        <h1 class="brand-title">Maxximalist</h1>
+        <p class="tagline">Shop the Unlimited</p>
     </main>
 
+    <section class="new-arrivals-section">
+        <div class="arrivals-container">
+            <div class="arrivals-text">
+                <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6; display: block; margin-bottom: 20px;">Curated Drops</span>
+                <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 4rem; margin: 0 0 30px 0;">New Arrivals</h2>
+                <button class="slide-btn" onclick="openModal('exploreModal')">Explore Collection</button>
+            </div>
+            <div class="arrivals-image-slot">
+                <img src="https://i.ibb.co/m57BgBKc/IMG-0637.jpg" alt="New Arrivals">
+            </div>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6;">Browse By</span>
+        <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 3rem; margin: 10px 0 0 0;">Categories</h2>
+        <div class="categories-grid">
+            <a href="#" class="category-card"><span class="category-name">Ribbon Flowers</span></a>
+            <a href="#" class="category-card"><span class="category-name">Pipe Cleaner Flowers</span></a>
+            <a onclick="openModal('jewelryModal')" class="category-card"><span class="category-name">Jewelry</span></a>
+            <a href="#" class="category-card"><span class="category-name">Clay Art</span></a>
+            <a href="#" class="category-card"><span class="category-name">Bookmarks</span></a>
+            <a href="#" class="category-card"><span class="category-name">Custom Handdrawn Portraits</span></a>
+            <a href="#" class="category-card"><span class="category-name">Keychains</span></a>
+            <a href="#" class="category-card"><span class="category-name">Handmade Candles</span></a>
+            <a href="#" class="category-card"><span class="category-name">Wall Hanging</span></a>
+            <a href="#" class="category-card"><span class="category-name">Phone Holders</span></a>
+            <a href="#" class="category-card"><span class="category-name">Resin Art</span></a>
+            <a href="#" class="category-card"><span class="category-name">Hair Accessories</span></a>
+            <a href="#" class="category-card"><span class="category-name">Paint Yourself</span></a>
+            <a href="#" class="category-card"><span class="category-name">Gift Boxes</span></a>
+            <a href="#" class="category-card"><span class="category-name">Plushie</span></a>
+            <a href="#" class="category-card"><span class="category-name">Paintables</span></a>
+            <a href="#" class="category-card"><span class="category-name">Tote Bags</span></a>
+        </div>
+    </section>
+
+    <div class="modal-overlay" id="jewelryModal">
+        <div class="modal-content-wide" style="background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); border-radius: 10px;">
+            <span class="close-btn" onclick="closeModal('jewelryModal')">&times;</span>
+            <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 30px;">Jewelry</h2>
+            <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
+                <a href="#" class="category-card"><span class="category-name">Earrings</span></a>
+                <a href="#" class="category-card"><span class="category-name">Necklace</span></a>
+                <a href="#" class="category-card"><span class="category-name">Bracelets</span></a>
+                <a href="#" class="category-card"><span class="category-name">Rings</span></a>
+                <a href="#" class="category-card"><span class="category-name">Arm Cuffs</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="exploreModal">
+        <div class="modal-content-wide">
+            <span class="close-btn" onclick="closeModal('exploreModal')">&times;</span>
+            <h2 class="explore-title">The New Arrivals</h2>
+            <div class="explore-scroll-container">
+                <div class="product-card">
+                    <div class="product-image-box"></div>
+                    <div class="product-info">
+                        <h3>Velvet Dusk</h3>
+                        <p>Hand-stitched velvet with deep crimson undertones.</p>
+                        <a href="#" class="view-item-btn">View Item</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image-box"></div>
+                    <div class="product-info">
+                        <h3>Golden Relic</h3>
+                        <p>Antique gold finishes meet modern silhouettes.</p>
+                        <a href="#" class="view-item-btn">View Item</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="shopModal">
+        <div class="modal-content-wide" style="max-width: 600px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); padding-top: 60px;">
+            <span class="close-btn" onclick="closeModal('shopModal')">&times;</span>
+            <h2 style="text-transform: uppercase; letter-spacing: 0.4em; font-size: 2rem; margin-bottom: 20px;">Shop</h2>
+            <p style="font-size: 16px; opacity: 0.8; line-height: 1.8; letter-spacing: 0.1em;">The unlimited collection is currently being curated. Check back soon for the full experience.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="aboutModal">
+        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); padding-top: 60px;">
+            <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
+            <h2 style="text-transform: uppercase; letter-spacing: 0.2em;">About</h2>
+            <p style="font-size: 14px; opacity: 0.8; line-height: 1.8;">Maxximalist: Where more is always more. Curating the unlimited.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); padding-top: 60px;">
+            <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
+            <h2 style="text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 20px;">Contact</h2>
+            <div style="font-size: 14px; line-height: 2;">
+                <p><a href="mailto:maxximalist07@gmail.com" style="color: var(--gold); text-decoration: none;">Email: maxximalist07@gmail.com</a></p>
+                <p><a href="https://instagram.com/maxximalist_" target="_blank" style="color: var(--gold); text-decoration: none;">Instagram: @maxximalist_</a></p>
+                <p><a href="https://youtube.com/@maxximalist-q2n" target="_blank" style="color: var(--gold); text-decoration: none;">YouTube: @maxximalist-q2n</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(id) { 
+            document.getElementById(id).style.display = "flex"; 
+            document.body.style.overflow = "hidden"; 
+        }
+        function closeModal(id) { 
+            document.getElementById(id).style.display = "none"; 
+            document.body.style.overflow = "auto";
+        }
+        window.onclick = function(event) { 
+            if (event.target.className === 'modal-overlay') { 
+                event.target.style.display = "none"; 
+                document.body.style.overflow = "auto";
+            } 
+        }
+    </script>
 </body>
 </html>
