@@ -288,6 +288,7 @@
             color: var(--gold);
             border-bottom: 1px solid var(--gold);
             padding-bottom: 5px;
+            cursor: pointer;
         }
 
         .close-btn { 
@@ -358,13 +359,11 @@
         </div>
     </section>
 
-    <section class="categories-section">
+    <section class="categories-section" id="categories">
         <span style="font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; opacity: 0.6;">Browse By</span>
         <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 3rem; margin: 10px 0 0 0;">Categories</h2>
         <div class="categories-grid">
-           
             <a href="#" class="category-card"><span class="category-name">Pipe Cleaner Flowers</span></a>
-           
         </div>
     </section>
 
@@ -391,8 +390,8 @@
                     <div class="product-image-box"></div>
                     <div class="product-info">
                         <h3>chenille stem red bouquet</h3>
-                        <p>Hand made bouqute with chenile stems(pipe cleaners).</p>
-                        <a href="#" class="view-item-btn">View Item</a>
+                        <p>Hand made bouquet with chenille stems(pipe cleaners).</p>
+                        <a onclick="closeModal('exploreModal'); window.location.href='#categories'" class="view-item-btn">View Item</a>
                     </div>
                 </div>
                 <div class="product-card">
@@ -400,7 +399,7 @@
                     <div class="product-info">
                         <h3>Golden Relic</h3>
                         <p>Antique gold finishes meet modern silhouettes.</p>
-                        <a href="#" class="view-item-btn">View Item</a>
+                        <a onclick="closeModal('exploreModal'); openModal('jewelryModal')" class="view-item-btn">View Item</a>
                     </div>
                 </div>
             </div>
