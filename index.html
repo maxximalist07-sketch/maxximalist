@@ -20,6 +20,11 @@
             color: var(--gold);
             scroll-behavior: smooth;
             overflow-x: hidden;
+            width: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         /* NAVIGATION BAR */
@@ -27,7 +32,6 @@
             width: 100%;
             border-bottom: 1px solid rgba(226, 192, 141, 0.15);
             padding: 30px 0 25px 0;
-            box-sizing: border-box;
             z-index: 10;
             position: sticky;
             top: 0;
@@ -39,7 +43,7 @@
             display: flex;
             list-style: none;
             margin: 0 auto;
-            padding: 0 5%; 
+            padding: 0 20px; 
             justify-content: space-evenly; 
             align-items: center;
             max-width: 900px; 
@@ -57,16 +61,17 @@
 
         /* HERO AREA */
         .hero-section {
-            height: 90vh; 
+            min-height: 80vh; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 40px 20px;
+            text-align: center;
         }
 
         .brand-symbol {
-            max-height: 120px; 
+            max-height: 100px; 
             width: auto;
             margin-bottom: 25px; 
             opacity: 0.9;
@@ -83,14 +88,14 @@
             font-family: 'Bodoni Moda', serif;
             font-style: italic;
             font-weight: 400;
-            font-size: clamp(3.5rem, 15vw, 8.5rem);
+            font-size: clamp(2.5rem, 12vw, 8.5rem);
             letter-spacing: -0.02em;
             margin: 0;
-            text-align: center;
+            line-height: 1.1;
         }
 
         .tagline {
-            font-size: 12px;
+            font-size: clamp(10px, 2vw, 12px);
             letter-spacing: 0.5em;
             text-transform: uppercase;
             margin-top: 15px;
@@ -100,12 +105,7 @@
         /* NEW ARRIVALS SECTION */
         .new-arrivals-section {
             width: 100%;
-            min-height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px 10%;
-            box-sizing: border-box;
+            padding: 60px 5%;
             border-top: 1px solid rgba(226, 192, 141, 0.2);
         }
 
@@ -113,11 +113,12 @@
             display: flex;
             width: 100%;
             max-width: 1200px;
+            margin: 0 auto;
             align-items: center;
             gap: 50px;
         }
 
-        .arrivals-text { flex: 1; text-align: left; }
+        .arrivals-text { flex: 1; }
 
         .arrivals-image-slot {
             flex: 1;
@@ -125,19 +126,14 @@
             border: 1px solid rgba(226, 192, 141, 0.3);
             background: rgba(255, 255, 255, 0.05);
             overflow: hidden;
+            width: 100%;
         }
 
         .arrivals-image-slot img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            opacity: 0.9;
-            transition: 0.5s ease;
-        }
-        
-        .arrivals-image-slot:hover img {
-            opacity: 1;
-            transform: scale(1.02);
+            display: block;
         }
 
         .slide-btn {
@@ -158,15 +154,14 @@
         /* CATEGORIES SECTION */
         .categories-section {
             width: 100%;
-            padding: 80px 10%;
-            box-sizing: border-box;
+            padding: 80px 5%;
             border-top: 1px solid rgba(226, 192, 141, 0.2);
             text-align: center;
         }
 
         .categories-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             max-width: 1200px;
             margin: 40px auto 0 auto;
@@ -177,18 +172,11 @@
             padding: 40px 20px;
             background: rgba(255, 255, 255, 0.02);
             transition: 0.4s;
-            text-decoration: none;
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 150px;
-            cursor: pointer;
-        }
-
-        .category-card:hover {
-            border-color: var(--gold);
-            background: rgba(255, 255, 255, 0.05);
         }
 
         .category-name {
@@ -208,124 +196,70 @@
             background: rgba(26, 5, 5, 0.98);
             display: none; 
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             z-index: 100;
             backdrop-filter: blur(15px);
+            overflow-y: auto;
+            padding: 20px 0;
         }
 
         .modal-content-wide {
-            width: 90%;
-            max-width: 1400px;
-            padding: 40px 20px;
+            width: 95%;
+            max-width: 1200px;
+            padding: 60px 20px;
             position: relative;
-            text-align: center;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .explore-title {
-            text-transform: uppercase;
-            letter-spacing: 0.6em;
-            font-size: 14px;
-            margin-bottom: 60px;
-            opacity: 0.9;
-        }
-
-        .explore-scroll-container {
-            display: flex;
-            gap: 25px;
-            overflow-x: auto;
-            padding: 20px 40px 60px 40px;
-            scrollbar-width: none;
-        }
-
-        .explore-scroll-container::-webkit-scrollbar {
-            display: none;
+            margin: auto;
         }
 
         .product-card {
-            position: relative;
-            min-width: 320px;
+            min-width: 280px;
             flex: 0 0 auto;
             border: 1px solid rgba(226, 192, 141, 0.2);
+            padding: 20px;
             background: rgba(255, 255, 255, 0.02);
-            padding: 25px;
-            text-align: left;
-            box-sizing: border-box;
         }
 
-        .product-image-box {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: rgba(255, 255, 255, 0.05);
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
+        .product-image-box { width: 100%; aspect-ratio: 1/1; overflow: hidden; margin-bottom: 20px; }
         .product-image-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        .product-info h3 {
-            font-family: 'Bodoni Moda', serif;
-            font-style: italic;
-            font-size: 24px;
-            margin: 0 0 15px 0;
-            font-weight: 400;
-        }
-
-        .product-info p {
-            font-size: 11px;
-            line-height: 1.6;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.7;
-            margin-bottom: 30px;
-            min-height: 40px;
-        }
-
-        .view-item-btn {
-            font-size: 10px;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--gold);
-            border-bottom: 1px solid var(--gold);
-            padding-bottom: 5px;
-            cursor: pointer;
-        }
-
         /* PRODUCT DETAIL SLIDER */
-        .product-detail-container { display: flex; gap: 50px; text-align: left; max-width: 1100px; margin: 0 auto; flex-wrap: wrap; }
-        .product-gallery { flex: 1; min-width: 300px; }
-        .main-img-container { width: 100%; aspect-ratio: 1/1; border: 1px solid rgba(226, 192, 141, 0.2); background: #000; overflow: hidden; }
+        .product-detail-container { display: flex; gap: 40px; text-align: left; }
+        .product-gallery { flex: 1.2; width: 100%; }
+        .main-img-container { width: 100%; aspect-ratio: 1/1; border: 1px solid rgba(226, 192, 141, 0.2); background: #000; }
         .main-img-container img { width: 100%; height: 100%; object-fit: contain; }
-        .thumbnail-bar { display: flex; gap: 10px; margin-top: 15px; overflow-x: auto; padding-bottom: 10px; }
-        .thumb { width: 60px; height: 60px; border: 1px solid rgba(226, 192, 141, 0.3); cursor: pointer; opacity: 0.6; object-fit: cover; flex-shrink: 0; }
+        
+        .thumbnail-bar { 
+            display: flex; 
+            gap: 10px; 
+            margin-top: 15px; 
+            overflow-x: auto; 
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+        }
+        .thumb { width: 70px; height: 70px; border: 1px solid rgba(226, 192, 141, 0.3); cursor: pointer; opacity: 0.6; object-fit: cover; flex-shrink: 0; }
         .thumb.active { opacity: 1; border-color: var(--gold); }
-        .product-info-column { flex: 1; min-width: 300px; }
-        .price-tag { font-size: 24px; color: var(--gold); margin: 20px 0; display: block; }
+        
+        .product-info-column { flex: 1; }
 
         .close-btn { 
-            position: absolute; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: var(--gold);
-            background: rgba(0, 0, 0, 0.5); width: 45px; height: 45px; display: flex;
-            align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--gold); z-index: 1000;
-            transition: 0.3s;
+            position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; color: var(--gold);
+            background: rgba(0, 0, 0, 0.8); width: 45px; height: 45px; display: flex;
+            align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--gold); z-index: 1001;
         }
-        .close-btn:hover { background: var(--gold); color: var(--burgundy); transform: scale(1.1); }
 
+        /* MOBILE FIXES */
         @media (max-width: 768px) {
-            .navbar { padding: 15px 0 10px 0; }
-            .nav-links { gap: 10px; padding: 0 10px; }
-            .nav-links a { font-size: 9px; letter-spacing: 0.1em; }
-            .arrivals-container { flex-direction: column; text-align: center; gap: 40px; }
-            .arrivals-text { width: 100%; text-align: center; }
-            .arrivals-image-slot { width: 100%; aspect-ratio: 1/1; }
-            .slide-btn { margin: 0 auto; width: 80%; }
-            .categories-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .category-card { min-height: 100px; padding: 15px; }
-            .category-name { font-size: 1.1rem; }
-            .brand-title { font-size: 3rem; }
-            .product-detail-container { flex-direction: column; }
+            .navbar { padding: 15px 0; }
+            .nav-links { padding: 0 10px; }
+            .nav-links a { font-size: 10px; letter-spacing: 0.15em; }
+            
+            .arrivals-container { flex-direction: column; text-align: center; }
+            .arrivals-text h2 { font-size: 2.5rem !important; }
+            
+            .product-detail-container { flex-direction: column; gap: 20px; }
+            .product-info-column h2 { font-size: 2rem !important; }
+            
+            .modal-content-wide { padding: 40px 15px; }
         }
     </style>
 </head>
@@ -370,53 +304,45 @@
     </section>
 
     <div class="modal-overlay" id="jewelryModal">
-        <div class="modal-content-wide" style="background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); border-radius: 10px;">
+        <div class="modal-content-wide" style="background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); border-radius: 10px; text-align: center;">
             <span class="close-btn" onclick="closeModal('jewelryModal')">&times;</span>
             <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 30px;">Jewelry</h2>
-            <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));">
-                <a href="#" class="category-card"><span class="category-name">Earrings</span></a>
-                <a href="#" class="category-card"><span class="category-name">Necklace</span></a>
-                <a href="#" class="category-card"><span class="category-name">Bracelets</span></a>
-                <a href="#" class="category-card"><span class="category-name">Rings</span></a>
-                <a href="#" class="category-card"><span class="category-name">Arm Cuffs</span></a>
+            <div class="categories-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                <div class="category-card"><span class="category-name" style="font-size: 1.1rem;">Earrings</span></div>
+                <div class="category-card"><span class="category-name" style="font-size: 1.1rem;">Necklace</span></div>
+                <div class="category-card"><span class="category-name" style="font-size: 1.1rem;">Bracelets</span></div>
+                <div class="category-card"><span class="category-name" style="font-size: 1.1rem;">Rings</span></div>
+                <div class="category-card"><span class="category-name" style="font-size: 1.1rem;">Arm Cuffs</span></div>
             </div>
         </div>
     </div>
 
     <div class="modal-overlay" id="exploreModal">
-        <div class="modal-content-wide">
+        <div class="modal-content-wide" style="text-align: center;">
             <span class="close-btn" onclick="closeModal('exploreModal')">&times;</span>
-            <h2 class="explore-title">The New Arrivals</h2>
-            <div class="explore-scroll-container">
+            <h2 style="text-transform: uppercase; letter-spacing: 0.6em; font-size: 14px; margin-bottom: 40px;">The New Arrivals</h2>
+            <div style="display: flex; gap: 20px; overflow-x: auto; padding-bottom: 20px; text-align: left;">
                 <div class="product-card">
-                    <div class="product-image-box">
-                        <img src="https://i.ibb.co/s9Lqdbnj/IMG-0832.jpg" alt="Red Bouquet">
-                    </div>
-                    <div class="product-info">
-                        <h3>chenille stem red bouquet</h3>
-                        <p>Hand made bouquet with chenille stems(pipe cleaners).</p>
-                        <a onclick="closeModal('exploreModal'); openModal('productDetailModal')" class="view-item-btn">View Item</a>
-                    </div>
+                    <div class="product-image-box"><img src="https://i.ibb.co/s9Lqdbnj/IMG-0832.jpg"></div>
+                    <h3 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 20px; margin: 0 0 10px 0;">chenille stem red bouquet</h3>
+                    <a onclick="closeModal('exploreModal'); openModal('productDetailModal')" style="color: var(--gold); text-decoration: underline; font-size: 11px; cursor: pointer; letter-spacing: 0.2em;">VIEW ITEM</a>
                 </div>
                 <div class="product-card">
-                    <div class="product-image-box"></div>
-                    <div class="product-info">
-                        <h3>Golden Relic</h3>
-                        <p>Antique gold finishes meet modern silhouettes.</p>
-                        <a onclick="closeModal('exploreModal'); openModal('jewelryModal')" class="view-item-btn">View Item</a>
-                    </div>
+                    <div class="product-image-box" style="background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;">Coming Soon</div>
+                    <h3 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 20px; margin: 0 0 10px 0;">Golden Relic</h3>
+                    <a onclick="closeModal('exploreModal'); openModal('jewelryModal')" style="color: var(--gold); text-decoration: underline; font-size: 11px; cursor: pointer; letter-spacing: 0.2em;">VIEW CATEGORY</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="modal-overlay" id="flowerCategoryModal">
-        <div class="modal-content-wide">
+        <div class="modal-content-wide" style="text-align: center;">
             <span class="close-btn" onclick="closeModal('flowerCategoryModal')">&times;</span>
             <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 30px;">Flower Collection</h2>
             <div class="categories-grid">
-                <div class="category-card" style="padding: 20px;" onclick="closeModal('flowerCategoryModal'); openModal('productDetailModal')">
-                    <img src="https://i.ibb.co/s9Lqdbnj/IMG-0832.jpg" style="width: 100%; height: 200px; object-fit: cover; margin-bottom: 15px;">
+                <div class="category-card" onclick="closeModal('flowerCategoryModal'); openModal('productDetailModal')">
+                    <img src="https://i.ibb.co/s9Lqdbnj/IMG-0832.jpg" style="width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 15px;">
                     <span class="category-name" style="font-size: 1.2rem;">Red Chenille Bouquet</span>
                     <p style="margin-top: 10px;">$45.00</p>
                 </div>
@@ -445,8 +371,8 @@
                 </div>
                 <div class="product-info-column">
                     <h2 style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 3rem; margin: 0;">Red Chenille Bouquet</h2>
-                    <span class="price-tag">$45.00</span>
-                    <p style="opacity: 0.8; line-height: 1.6; font-family: sans-serif;">Hand made bouquet with chenille stems(pipe cleaners). A maximalist treasure for your space.</p>
+                    <span style="font-size: 24px; color: var(--gold); margin: 20px 0; display: block;">$45.00</span>
+                    <p style="opacity: 0.8; line-height: 1.6; font-family: sans-serif; font-size: 14px;">Hand made bouquet with chenille stems (pipe cleaners). A maximalist treasure for your space.</p>
                     <button class="slide-btn" style="width: 100%; margin-top: 20px;">Add to Cart</button>
                 </div>
             </div>
@@ -454,15 +380,15 @@
     </div>
 
     <div class="modal-overlay" id="shopModal">
-        <div class="modal-content-wide" style="max-width: 600px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); padding-top: 60px;">
+        <div class="modal-content-wide" style="max-width: 600px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); text-align: center;">
             <span class="close-btn" onclick="closeModal('shopModal')">&times;</span>
             <h2 style="text-transform: uppercase; letter-spacing: 0.4em; font-size: 2rem; margin-bottom: 20px;">Shop</h2>
-            <p style="font-size: 16px; opacity: 0.8; line-height: 1.8; letter-spacing: 0.1em;">The unlimited collection is currently being curated. Check back soon for the full experience.</p>
+            <p style="font-size: 16px; opacity: 0.8; line-height: 1.8;">The unlimited collection is currently being curated. Check back soon.</p>
         </div>
     </div>
 
     <div class="modal-overlay" id="aboutModal">
-        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); padding-top: 60px;">
+        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); text-align: center;">
             <span class="close-btn" onclick="closeModal('aboutModal')">&times;</span>
             <h2 style="text-transform: uppercase; letter-spacing: 0.2em;">About</h2>
             <p style="font-size: 14px; opacity: 0.8; line-height: 1.8;">Maxximalist: Where more is always more. Curating the unlimited.</p>
@@ -470,7 +396,7 @@
     </div>
 
     <div class="modal-overlay" id="contactModal">
-        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); padding-top: 60px;">
+        <div class="modal-content-wide" style="max-width: 500px; background: var(--burgundy); border: 1px solid rgba(226,192,141,0.2); text-align: center;">
             <span class="close-btn" onclick="closeModal('contactModal')">&times;</span>
             <h2 style="text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 20px;">Contact</h2>
             <div style="font-size: 14px; line-height: 2;">
