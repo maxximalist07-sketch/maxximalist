@@ -7,25 +7,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora&display=swap" rel="stylesheet">
     
     <style>
-        /* 1. Global Reset - Removes all white gaps and default margins */
+        /* Reset all default browser spacing */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        body, html {
+            height: 100%;
             background-color: #000;
             font-family: 'Lora', serif;
             overflow-x: hidden;
         }
 
-        /* 2. Navigation Bar - Deep Green Theme */
+        /* Fixed Navigation Bar - Deep Green */
         .main-header {
-            background-color: #0a140a; /* Deep forest green to match the vibe */
+            background-color: #0a140a; 
             width: 100%;
-            position: fixed; /* Keeps it at the top */
+            position: fixed;
             top: 0;
+            left: 0;
             z-index: 1000;
             border-bottom: 1px solid #1a2e1a;
         }
@@ -43,7 +45,7 @@
         }
 
         .top-nav a {
-            color: #d4af37; /* Elegant Gold */
+            color: #d4af37;
             text-decoration: none;
             font-family: 'Playfair Display', serif;
             font-size: 13px;
@@ -54,36 +56,37 @@
 
         .top-nav a:hover {
             color: #ffffff;
-            letter-spacing: 5px;
         }
 
-        /* 3. Hero Image Section */
+        /* Hero Section - Fixed to fill the full screen */
         .hero-container {
-            width: 100%;
+            width: 100vw;
             height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #000;
+            display: block;
+            position: relative;
         }
 
+        /* This is the fix for the small image issue */
         .hero-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* This makes the image fill the screen perfectly */
+            object-fit: cover; /* This forces it to fill the laptop screen */
             display: block;
         }
 
-        /* 4. Mobile Responsiveness */
+        picture {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Mobile adjustments */
         @media (max-width: 600px) {
             .top-nav ul {
                 padding: 15px 0;
             }
-            
             .top-nav li {
                 margin: 0 10px;
             }
-
             .top-nav a {
                 font-size: 10px;
                 letter-spacing: 1px;
